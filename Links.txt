@@ -1,0 +1,7 @@
+Portal da Transparência
+Dispensa de Medicamentos: https://transparencia.sns.gov.pt/explore/dataset/evolucao-da-dispensa-de-medicamentos/table/?disjunctive.regiao_de_saude&sort=tempo
+Despesa com Medicamentos nos Hospitais do SNS: https://transparencia.sns.gov.pt/explore/dataset/despesa-com-medicamentos-nos-hospitais-do-sns/table/?disjunctive.regiao&sort=tempo
+
+
+Exemplo de trabalho anterior: https://dash.gallery/dash-food-consumption/
+teste
