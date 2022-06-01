@@ -27,7 +27,7 @@ app.layout = html.Div([
     html.H1('TESTES'),
     html.H3('analise doentes cardiacos, todos, fumadores e não fumadores'),
     html.Div([
-        html.Div([dcc.Graph(id="pie_chart")],className="column"),
+        html.Div([dcc.Graph(id="pie_chart")], style={'width': '49%', 'float': 'left', 'display': 'inline-block'}),
         html.Div([
             html.H4("Filtros:"),
             dcc.RadioItems(
@@ -35,7 +35,7 @@ app.layout = html.Div([
                 options=radio_options_fumadores,
                 value='todos'
             )
-        ],className="column"),
+        ], style={'width': '49%', 'float': 'right', 'display': 'inline-block'}),
     ],className='row')
 ])
 
