@@ -16,25 +16,27 @@ radio_options_fumadores = [
     {'label': 'Fumadores', 'value': 'fumadores'}
 ]
 
+
 ## linha obrigatória para lançar a aplicação
 
 app = Dash(__name__)
 
 ## HTML
 
-app.layout = html.Div(
-
-
-
+app.layout = html.Div([
     html.H1('TESTES'),
     html.H3('analise doentes cardiacos, todos, fumadores e não fumadores'),
-    dcc.Graph(id="pie_chart"),
-    html.H4("Filtros:"),
-    dcc.RadioItems(
-        id='radio_filtro_fumadores',
-        options=radio_options_fumadores,
-        value='todos'
-    )
+    html.Div([
+        html.Div([dcc.Graph(id="pie_chart")],className="column"),
+        html.Div([
+            html.H4("Filtros:"),
+            dcc.RadioItems(
+                id='radio_filtro_fumadores',
+                options=radio_options_fumadores,
+                value='todos'
+            )
+        ],className="column"),
+    ],className='row')
 ])
 
 ## Callbacks de output e input
