@@ -17,9 +17,9 @@ app = Dash(__name__)
 
 app.layout = html.Div([
     html.Div([
-        html.H1('TESTES')
+        html.H1('TESTE')
     ], className='row container'),
-    html.Br(),
+
     html.Div([
         html.Div([
             html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')

@@ -12,10 +12,6 @@ body {
     text-align: center;
 }
 
-.center {
-  text-align: center;
-}
-
 .container {
     background-color: #C3F1E1;
     width:100%;
@@ -36,7 +32,6 @@ body {
     height:100%;
     padding:10px;
     float: center;
-
 }
 .col2 {
     width:49%;
