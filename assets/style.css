@@ -1,153 +1,45 @@
-.js-plotly-plot .plotly .modebar {
-  padding-top: 5%;
-  margin-right: 3.5%;
-}
 
 body {
   background-color: #f2f2f2;
-  margin: 5%;
-}
-
-.two.columns {
-  width: 16.25%;
-}
-
-.column,
-.columns {
-  margin-left: 0.5%;
-}
-
-.pretty_container {
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  margin: 10px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 2px 2px 2px lightgrey;
-}
-
-.no_border_container {
-  border-radius: 0px;
-  background-color: #f9f9f9;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  box-shadow: 2px 2px 2px lightgrey;
-}
-
-.bare_container {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-
-.dcc_control {
-  margin: 0;
-  padding: 5px;
-  width: calc(100%-40px);
-}
-
-.control_label {
-  margin: 0;
-  padding: 10px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  width: calc(100%-40px);
-  text-align: right;
-}
-
-.rc-slider {
-  margin-left: 0px;
-  padding-left: 0px;
-}
-
-.flex-display {
-  display: flex;
-}
-
-.container-display {
-  display: flex;
-}
-
-#individual_graph,
-#aggregate_graph {
-  width: calc(100% - 30px);
-  position: absolute;
-}
-
-#count_graph {
-  position: absolute;
-  height: calc(100% - 30px);
-  width: calc(100% - 30px);
-}
-
-#countGraphContainer {
-  flex: 5;
-  position: relative;
+  margin: 4%;
 }
 
 #header {
   align-items: center;
 }
 
-#learn-more-button {
-  text-align: center;
-  height: 100%;
-  padding: 0 20px;
-  text-transform: none;
-  font-size: 15px;
-  float: right;
-  margin-right: 10px;
-  margin-top: 30px;
+.container {
+    width:100%;
+    max-width:600px;
+    border:2px solid black;
+    margin: 0 auto;
+    padding:10px;
 }
-#title {
-  text-align: center;
+.row {
+    height:100px; /*set height*/
+    border:2px solid blue;
+    width:100%;
+    margin-bottom:10px;
+    padding:10px;
 }
-
-.mini_container {
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  margin: 10px;
-  padding: 15px;
-  position: relative;
-  box-shadow: 2px 2px 2px lightgrey;
+.col1 {
+    border:2px solid red;
+    width:100%;
+    height:100%;
 }
-
-#right-column {
-  display: flex;
-  flex-direction: column;
+.col2 {
+    border:2px solid green;
+    width:49%;
+    float:left;
+    height:100%;
+    margin-right:2%;
 }
-
-#wells {
-  flex: 1;
+.col2:last-child {margin-right:0;  }
+.col3 {
+    border:2px solid brown;
+    width:32%;
+    float:left;
+    height:100%;
+    margin-right:2%;
 }
-
-#gas {
-  flex: 1;
-}
-
-#aggregate_data {
-  align-items: center;
-}
-
-#oil {
-  flex: 1;
-}
-
-#water {
-  flex: 1;
-}
-
-#tripleContainer {
-  display: flex;
-  flex: 3;
-}
-
-#mainContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-#pie_graph > div > div > svg:nth-child(3) > g.infolayer > g.legend {
-  pointer-events: all;
-  transform: translate(30px, 349px);
-}
+.col3:last-child {margin-right:0;  }
