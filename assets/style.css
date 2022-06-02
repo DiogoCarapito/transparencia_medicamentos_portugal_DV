@@ -1,14 +1,14 @@
 
 body {
   background-color: #FFFFFF;
-  margin: 4%;
+  margin: 5%;
 }
 
 #header {
   align-items: center;
 }
 
-h1 {
+.h1 {
     text-align: center;
 }
 
@@ -16,14 +16,15 @@ h1 {
   text-align: center;
 }
 
-
 .container {
+    background-color: #C3F1E1;
     width:100%;
-    max-width:600px;
-    margin: 0 auto;
-    padding:10px;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    padding: 90px 0px;
+    border-radius: 10px;
 }
+
 .row {
     width:100%;
     margin-bottom:10px;
@@ -33,6 +34,7 @@ h1 {
 .col1 {
     width:100%;
     height:100%;
+    padding:10px;
     float: center;
 
 }
@@ -42,6 +44,7 @@ h1 {
     height:100%;
     margin-right:2%;
     float: center;
+    padding:10px;
 }
 .col2:last-child {margin-right:0;  }
 .col3 {
@@ -50,5 +53,6 @@ h1 {
     height:100%;
     margin-right:2%;
     float: center;
+    padding:10px;
 }
 .col3:last-child {margin-right:0;  }

@@ -18,36 +18,35 @@ app = Dash(__name__)
 app.layout = html.Div([
     html.Div([
         html.H1('TESTES')
-    ], id='1_div', className='center', style={'display': 'flex', 'height': '8%'}),
-
+    ], className='row container'),
+    html.Br(),
     html.Div([
-        html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores'
+        html.Div([
+            html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')
+        ], className='row'),
+        html.Div([
+            html.Div([
+                html.Label('Filtros:'),
+                dcc.RadioItems(
+                    id='radio_filtro_fumadores',
+                    options=radio_options_fumadores,
+                    value='todos'
                 )
-    ], id='2_div', className='center', style={'display': 'flex', 'height': '8%'}),
+            ], className='col2 ', style={'float': 'left'}),
 
+            html.Div([
+                    dcc.Graph(id='pie_chart'),
+                ], className='col2 graph', style={'float':'right'}),
+
+
+        ],className='row', style={'display': 'flex','height':'30%'}),
+
+    ], className='row container'),
+
+    html.Br(),
     html.Div([
-        html.Div([
-
-            html.Label('Filtros:'),
-            dcc.RadioItems(
-                id='radio_filtro_fumadores',
-                options=radio_options_fumadores,
-                value='todos'
-            )
-        ],id='filter', className='col3 center', style={'float': 'left'}),
-
-        html.Div([
-            dcc.Graph(id='pie_chart'),
-        ],id='pie_chart_div',className='col3', style={'float':'center'}),
-        html.Div([
-            html.Label('Filtros:')
-        ], id='filter_2', className='col3', style={'float': 'right'}),
-
-    ],id='3_div',className='row', style={'display': 'flex','height':'30%'}),
-
-    html.Div([
-        html.H1('TESTES'),
-    ], id='4_div', className='row', style={'display':'flex','height':'30%'})
+        html.H1('TESTES')
+    ], className='row container', style={'display':'flex','height':'30%'})
 
 ])
 
