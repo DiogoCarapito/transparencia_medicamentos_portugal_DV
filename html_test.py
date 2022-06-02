@@ -1,6 +1,8 @@
 import pandas as pd
+#import dash
 from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objs as go
+import dash_bootstrap_components as dbc
 
 ## dá para alternar entre a base de dados dummy ou a base de dados real
 
@@ -19,35 +21,31 @@ radio_options_fumadores = [
 
 ## linha obrigatória para lançar a aplicação
 
-app = Dash(__name__)
+app = Dash(
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
+)
 
 ## HTML
 
 app.layout = html.Div([
-    html.H1('TESTES'),
-    html.H3('analise doentes cardiacos, todos, fumadores e não fumadores'),
+    html.H1("Bootstrap TEST!", className="m-5"),
+    html.Div([
+        html.H3('analise doentes cardiacos, todos, fumadores e não fumadores'),
+    ],className='container'),
     html.Div([
         html.Div([
-            dcc.Graph(id="pie_chart")
-        ], className='column', style={'width': '32%', 'float': 'left', 'display': 'inline-block'}),
+            html.H4("Filtros:")
+        ],className='col'),
         html.Div([
-            html.H4("Filtros:"),
             dcc.RadioItems(
                 id='radio_filtro_fumadores',
                 options=radio_options_fumadores,
-                value='todos'
-            )
-        ], className='column', style={'width': '49%', 'float': 'center', 'display': 'inline-block'}),
-    ],className='row'),
-
+                value='todos')
+        ], className='col')
+    ],className='row align-items-center'),
     html.Div([
-        html.Div([
-            html.H1('TESTES'),
-        ], className='column', style={'width': '49%', 'float': 'center', 'display': 'inline-block'}),
-        html.Div([
-            html.H1('TESTES'),
-        ], className='column', style={'width': '49%', 'float': 'center', 'display': 'inline-block'}),
-    ],className='row')
+        dcc.Graph(id="pie_chart")
+    ])
 ])
 
 ## Callbacks de output e input
