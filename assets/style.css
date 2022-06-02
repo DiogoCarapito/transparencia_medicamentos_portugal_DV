@@ -1,6 +1,6 @@
 
 body {
-  background-color: #f2f2f2;
+  background-color: #FFFFFF;
   margin: 4%;
 }
 
@@ -8,30 +8,35 @@ body {
   align-items: center;
 }
 
+h1 {
+    text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+
 .container {
     width:100%;
     max-width:600px;
-    border:2px solid black;
     margin: 0 auto;
     padding:10px;
+    text-align: center;
 }
 .row {
-    height:100px; /*set height*/
-    border:2px solid blue;
     width:100%;
     margin-bottom:10px;
     padding:10px;
     display: inline-block;
 }
 .col1 {
-    border:2px solid red;
     width:100%;
     height:100%;
     float: center;
 
 }
 .col2 {
-    border:2px solid green;
     width:49%;
     float:left;
     height:100%;
@@ -40,7 +45,6 @@ body {
 }
 .col2:last-child {margin-right:0;  }
 .col3 {
-    border:2px solid brown;
     width:32%;
     float:left;
     height:100%;
