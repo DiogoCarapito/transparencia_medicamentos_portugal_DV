@@ -26,22 +26,22 @@ app.layout = html.Div([
         ], className='row'),
         html.Div([
             html.Div([
-                html.Label('Filtros:'),
+                html.H3('Filtros:'),
                 dcc.RadioItems(
                     id='radio_filtro_fumadores',
                     options=radio_options_fumadores,
                     value='todos'
                 )
-            ], className='col2 ', style={'float': 'left'}),
+            ], className='col2 ', style={'text-align': 'left','width':'20%','float': 'left'}),
 
             html.Div([
                     dcc.Graph(id='pie_chart'),
-                ], className='col2 graph', style={'float':'right'}),
+                ], className='col2', style={'width':'79%','float':'right'}),
 
 
-        ],className='row', style={'display': 'flex','height':'30%'}),
+        ],className='row', style={'display': 'flex'}),
 
-    ], className='row container'),
+    ], className='row container',style={'hight':'40%'}),
 
     html.Br(),
     html.Div([

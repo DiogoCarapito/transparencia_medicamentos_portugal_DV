@@ -1,14 +1,17 @@
-
 body {
   background-color: #FFFFFF;
   margin: 5%;
 }
 
-#header {
-  align-items: center;
+.h1 {
+    text-align: center;
 }
 
-.h1 {
+.h3 {
+    text-align: center;2
+}
+
+.center {
     text-align: center;
 }
 
@@ -27,12 +30,19 @@ body {
     padding:10px;
     display: inline-block;
 }
+
+.col{
+    padding:10px;
+    float: center;
+}
+
 .col1 {
     width:100%;
     height:100%;
     padding:10px;
     float: center;
 }
+
 .col2 {
     width:49%;
     float:left;
@@ -41,7 +51,9 @@ body {
     float: center;
     padding:10px;
 }
+
 .col2:last-child {margin-right:0;  }
+
 .col3 {
     width:32%;
     float:left;
@@ -50,4 +62,5 @@ body {
     float: center;
     padding:10px;
 }
+
 .col3:last-child {margin-right:0;  }
