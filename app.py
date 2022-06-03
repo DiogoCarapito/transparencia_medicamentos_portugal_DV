@@ -78,4 +78,5 @@ def generate_chart(radio_filtro_fumadores):
                      insidetextorientation='horizontal')])
     return fig
 
-app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
