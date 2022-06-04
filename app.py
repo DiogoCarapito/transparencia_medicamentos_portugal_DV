@@ -48,8 +48,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')
-        ], className='row'),
-        html.Br(),
+        ], className='row', style={'display': 'flex'}),
         html.Div([
             html.Div([
                 html.H3('Filtros:'),
@@ -62,8 +61,8 @@ app.layout = html.Div([
             html.Div([
                     dcc.Graph(id='pie_graph'),
                 ], className='col2', style={'width':'65%','float':'right'}),
-        ],className='row'),
-    ], className='row container'),
+        ],className='row', style={'display': 'flex'}),
+    ], className='row container', style={'display': 'block'}),
 
     html.Br(),
     html.Br(),
@@ -71,7 +70,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
-        ], className='row'),
+        ], className='row', style={'display': 'flex'}),
         html.Br(),
         html.Div([
             html.Div([
@@ -85,8 +84,8 @@ app.layout = html.Div([
             html.Div([
                 dcc.Graph(id='bar_chart_1'),
             ], className='col2', style={'width':'65%','float':'right'}),
-        ],className='row'),
-    ], className='row container'),
+        ],className='row', style={'display': 'flex'}),
+    ], className='row container', style={'display': 'block'}),
 
 ])
 
