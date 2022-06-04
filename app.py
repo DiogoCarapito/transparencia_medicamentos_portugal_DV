@@ -39,13 +39,10 @@ app.layout = html.Div([
                       ], id='Logo'),
             ],style={'width':'20%'}
         ),
-    ],id='top',style={'display': 'flex'}),
+    ],className='container', style={'display': 'flex'}),
+
     html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
-    html.Br(),
+
     html.Div([
         html.Div([
             html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')
@@ -70,7 +67,7 @@ app.layout = html.Div([
     ], className='row container',style={'hight':'40%'}),
 
     html.Br(),
-    html.Br(),
+
     html.Div([
         html.Div([
             html.H3('Filtros:'),
