@@ -30,7 +30,7 @@ app = Dash(__name__)
 app.layout = html.Div([
     html.Div([
         html.Div([
-            html.H1('TESTE')
+            html.H2('Medicamentos - Portal da Transparência')
             ],style={'width':'79%','position': 'center'}
         ),
         html.Div([
@@ -48,7 +48,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')
-        ], className='row'),
+        ], className='row', style={'display':'block'}),
         html.Div([
             html.Div([
                 html.H3('Filtros:'),
@@ -69,8 +69,8 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021')
-        ], className='row'),
+            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+        ], className='row', style={'display':'block'}),
         html.Div([
             html.Div([
                 html.H3('Filtros:'),
