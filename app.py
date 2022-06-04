@@ -62,7 +62,7 @@ app.layout = html.Div([
                     dcc.Graph(id='pie_graph'),
                 ], className='col2', style={'width':'65%','float':'right'}),
         ],className='row'),
-    ], className='row container',style={'hight':'40%'}),
+    ], className='row container'),
 
     html.Br(),
     html.Br(),
@@ -84,7 +84,7 @@ app.layout = html.Div([
                 dcc.Graph(id='bar_chart_1'),
             ], className='col2', style={'width':'65%','float':'right'}),
         ],className='row'),
-    ], className='row container',style={'hight':'40%'}),
+    ], className='row container'),
 
 
 ])
