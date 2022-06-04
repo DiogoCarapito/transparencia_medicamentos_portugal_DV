@@ -34,15 +34,9 @@ app.layout = html.Div([
             ],style={'width':'79%','position': 'center'}
         ),
         html.Div([
-            html.Div([html.Img(src=app.get_asset_url('logo.png'),
-                               style={'width': '50px', 'position': 'center'})
-                      ], id='Logo'),
-            ],style={'width':'20%'}
-        ),
+            html.Div([html.Img(src=app.get_asset_url('logo.png'),style={'width': '50px', 'position': 'center'})], id='logo'),
+        ],style={'width':'20%'}),
     ],className='row container', style={'display': 'flex'}),
-
-    html.Br(),
-    html.Br(),
 
     html.Div([
         html.Div([
@@ -50,9 +44,6 @@ app.layout = html.Div([
             html.Label('Explicações nevessárias sobre vários motivos e razões relativa a situações variadas e essenciais para uma boa relação entre as difrentes consistências ')
         ], className='row'),
     ]),
-
-    html.Br(),
-    html.Br(),
 
     html.Div([
         html.Div([
