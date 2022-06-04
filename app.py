@@ -35,11 +35,11 @@ app.layout = html.Div([
         ),
         html.Div([
             html.Div([html.Img(src=app.get_asset_url('logo.png'),
-                               style={'width': '50%', 'position': 'relative'})
+                               style={'width': '80px', 'position': 'center'})
                       ], id='Logo'),
             ],style={'width':'20%'}
         ),
-    ], className='container',style={'display': 'flex', 'height': '8%'}),
+    ], className='header',style={'display': 'flex'}),
     html.Br(),
     html.Br(),
     html.Div([
