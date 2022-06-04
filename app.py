@@ -70,7 +70,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
-        ], className='row', style={'display':'block'}),
+        ], className='row'),
         html.Div([
             html.Div([
                 html.H3('Filtros:'),
