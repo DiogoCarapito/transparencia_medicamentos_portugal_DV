@@ -31,7 +31,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H1('TESTE')
-            ],style={'width':'79%','position': 'relative'}
+            ],style={'width':'79%','position': 'center'}
         ),
         html.Div([
             html.Div([html.Img(src=app.get_asset_url('logo.png'),
@@ -39,7 +39,7 @@ app.layout = html.Div([
                       ], id='Logo'),
             ],style={'width':'20%'}
         ),
-    ], className='header',style={'display': 'flex'}),
+    ], className='container',style={'display': 'flex'}),
     html.Br(),
     html.Br(),
     html.Div([
