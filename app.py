@@ -39,7 +39,7 @@ app.layout = html.Div([
                       ], id='Logo'),
             ],style={'width':'20%'}
         ),
-    ], className='container',style={'display': 'flex'}),
+    ],id='top', className='container',style={'display': 'flex'}),
     html.Br(),
     html.Br(),
     html.Div([
