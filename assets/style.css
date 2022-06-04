@@ -1,6 +1,7 @@
 body {
   background-color: rgb(242, 242, 242);
   font-family: Helvetica, Sans-serif;
+  margin: 2%;
   font-size: 17px;
 }
 
@@ -26,10 +27,9 @@ body {
 }
 
 .row {
-    width:90%;
     margin-bottom:10px;
     padding:10px;
-    display: inline-block;
+    display: flex;
 }
 
 .col{

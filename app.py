@@ -35,12 +35,23 @@ app.layout = html.Div([
         ),
         html.Div([
             html.Div([html.Img(src=app.get_asset_url('logo.png'),
-                               style={'width': '45px', 'position': 'center'})
+                               style={'width': '50px', 'position': 'center'})
                       ], id='Logo'),
             ],style={'width':'20%'}
         ),
-    ],className='container', style={'display': 'flex'}),
+    ],className='row container', style={'display': 'flex'}),
 
+    html.Br(),
+    html.Br(),
+
+    html.Div([
+        html.Div([
+            html.H3('Explicação sobre o trabalho de DV'),
+            html.Label('Explicações nevessárias sobre vários motivos e razões relativa a situações variadas e essenciais para uma boa relação entre as difrentes consistências ')
+        ], className='row'),
+    ]),
+
+    html.Br(),
     html.Br(),
 
     html.Div([
@@ -56,30 +67,32 @@ app.layout = html.Div([
                     value='todos'
                 )
             ], className='col2 ', style={'text-align': 'left','width':'34%','float': 'left'}),
-
             html.Div([
                     dcc.Graph(id='pie_graph'),
                 ], className='col2', style={'width':'65%','float':'right'}),
-
-
-        ],className='row', style={'display': 'flex'}),
-
+        ],className='row'),
     ], className='row container',style={'hight':'40%'}),
 
+    html.Br(),
     html.Br(),
 
     html.Div([
         html.Div([
-            html.H3('Filtros:'),
-            dcc.Dropdown(
-                id='dropdown_ars_barchart_1',
-                options=dropdown_ars_barchart_1,
-                value='norte'
-            )
-        ], className='col2 ', style={'text-align': 'left', 'width': '30%', 'float': 'left'}),
+            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021')
+        ], className='row'),
         html.Div([
-            dcc.Graph(id='bar_chart_1'),
-        ], className='col2 ', style={'text-align': 'center', 'width': '69%','float': 'right'}),
+            html.Div([
+                html.H3('Filtros:'),
+                dcc.Dropdown(
+                    id='dropdown_ars_barchart_1',
+                    options=dropdown_ars_barchart_1,
+                    value='norte')
+            ], className='col2', style={'text-align': 'left', 'width': '30%', 'float': 'left'}),
+            html.Div([
+                dcc.Graph(id='bar_chart_1'),
+            ], className='col2', style={'text-align': 'center', 'width': '69%','float': 'right'}),
+        ], className='row'),
+
     ], className='row container', style={'display':'flex','height':'30%'})
 
 ])
