@@ -59,10 +59,10 @@ app.layout = html.Div([
                     options=radio_options_fumadores,
                     value='todos'
                 )
-            ], className='col2 ', style={'text-align': 'left','width':'34%','float': 'left'}),
+            ], className='col2 ', style={'text-align': 'left','width':'19%','float': 'left'}),
             html.Div([
-                    dcc.Graph(id='pie_graph'),
-                ], className='col2', style={'width':'65%','float':'right'}),
+                dcc.Graph(id='pie_graph'),
+            ], className='col2', style={'width':'80%','float':'right'}),
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
