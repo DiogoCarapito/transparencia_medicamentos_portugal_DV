@@ -29,7 +29,7 @@ body {
 .row {
     margin-bottom:10px;
     padding:10px;
-    display: flex;
+    display: inline-block;
 }
 
 .col{

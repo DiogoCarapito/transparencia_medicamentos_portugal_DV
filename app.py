@@ -86,14 +86,15 @@ app.layout = html.Div([
                 dcc.Dropdown(
                     id='dropdown_ars_barchart_1',
                     options=dropdown_ars_barchart_1,
-                    value='norte')
-            ], className='col2', style={'text-align': 'left', 'width': '30%', 'float': 'left'}),
+                    value='norte'
+                )
+            ], className='col2 ', style={'text-align': 'left','width':'34%','float': 'left'}),
             html.Div([
                 dcc.Graph(id='bar_chart_1'),
-            ], className='col2', style={'text-align': 'center', 'width': '69%','float': 'right'}),
-        ], className='row'),
+            ], className='col2', style={'width':'65%','float':'right'}),
+        ],className='row'),
+    ], className='row container',style={'hight':'40%'}),
 
-    ], className='row container', style={'display':'flex','height':'30%'})
 
 ])
 
