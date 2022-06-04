@@ -50,7 +50,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Analise doentes cardiacos, todos, fumadores e não fumadores')
-        ], className='row', style={'display': 'flex'}),
+        ], className='row', style={'display': 'flex','text-align': 'center'}),
         html.Div([
             html.Div([
                 html.H3('Filtros:'),
@@ -71,7 +71,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
-        ], className='row', style={'display': 'flex'}),
+        ], className='row', style={'display': 'flex','text-align': 'center'}),
         html.Br(),
         html.Div([
             html.Div([
