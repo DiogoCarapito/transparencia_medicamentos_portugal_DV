@@ -35,14 +35,14 @@ body {
 .col{
     padding:10px;
     float: center;
-    display: inline-block;
+    display: block;
 }
 
 .col1 {
     width:90%;
     padding:10px;
     float: center;
-    display: inline-block;
+    display: block;
 }
 
 .col2 {
@@ -51,7 +51,7 @@ body {
     margin-right:2%;
     float: center;
     padding:10px;
-    display: inline-block;
+    display:block;
 }
 
 .col2:last-child {margin-right:0;  }
@@ -63,7 +63,7 @@ body {
     margin-right:2%;
     float: center;
     padding:10px;
-    display: inline-block;
+    display: block;
 }
 
 .col3:last-child {margin-right:0;  }
