@@ -2,7 +2,7 @@ body {
   background-color: rgb(242, 242, 242);
   font-family: Helvetica, Sans-serif;
   margin: 20px;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .h1 {
@@ -27,8 +27,7 @@ body {
 }
 
 .row {
-    margin-bottom:10px;
-    padding:10px;
+    padding:6px;
     display: block;
 }
 
