@@ -5,11 +5,9 @@ import plotly.graph_objs as go
 ## CSV para o pie chart
 path = ''
 df = pd.DataFrame(data=pd.read_csv(path + 'registo__doença_cardiaca.csv'))
-#df = pd.DataFrame(data=pd.read_csv(path + 'heart_2020_cleaned.csv'))
 
 ## CSV para o bar chart 1
 df_bar_chart_1 = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
-
 
 radio_options_fumadores = [
     {'label': 'Todos', 'value': 'todos'},
