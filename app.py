@@ -7,7 +7,7 @@ path = ''
 df = pd.DataFrame(data=pd.read_csv(path + 'registo__doença_cardiaca.csv'))
 #df = pd.DataFrame(data=pd.read_csv(path + 'heart_2020_cleaned.csv'))
 
-## CSV para o bar chart
+## CSV para o bar chart 1
 df_bar_chart_1 = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
 
@@ -99,8 +99,8 @@ app.layout = html.Div([
 
 def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
 
+    ## logica para funcionamento do pie chart
     tabela_freq = df.groupby(['HeartDisease', 'Smoking']).size().unstack()
-
     if radio_filtro_fumadores == 'todos':
         sem_dc = tabela_freq.loc['No']['No'] + tabela_freq.loc['No']['Yes']
         com_dc = tabela_freq.loc['Yes']['No'] + tabela_freq.loc['Yes']['Yes']
@@ -112,16 +112,13 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
         com_dc = tabela_freq.loc['Yes']['Yes']
 
     df_contagens = pd.DataFrame(data={'categoria': ['Sem DC', 'Com DC'], 'numero': [sem_dc, com_dc]})
-
-    ## algumas configurações do piechart, mas segundo a documentação não tem o atributo especifico do layout, parece-me um pouco limitado...
     pie_chart = go.Figure(
         data=[go.Pie(labels=df_contagens['categoria'], values=df_contagens['numero'], textinfo='label+percent',
                      insidetextorientation='horizontal',showlegend=False)])
 
-    ## barchart
-    table_barchart_1 = df_bar_chart_1.loc[df_bar_chart_1['ars'] == dropdown_ars_barchart_1]
+    ## barchart_1
 
-    #data_bar_1= ('type'='bar', 'x'=table_barchart_1['ano'], 'y'=table_barchart_1['gasto_medicamentos'])
+    table_barchart_1 = df_bar_chart_1.loc[df_bar_chart_1['ars'] == dropdown_ars_barchart_1]
 
     layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
                       yaxis=dict(title='Gastos em milhões de €'),
@@ -131,8 +128,12 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
                             layout=layout_bar_1,
                             layout_yaxis_range=[0,max(df_bar_chart_1['gasto_medicamentos'])])
 
+    ## Execução dos diferentes gráficos
+
     return pie_chart, \
            bar_chart_1
+
+## linha necessária par execuar a app
 
 if __name__ == '__main__':
     app.run_server(debug=True)
