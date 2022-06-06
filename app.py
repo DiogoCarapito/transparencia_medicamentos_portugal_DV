@@ -117,7 +117,6 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
                      insidetextorientation='horizontal',showlegend=False)])
 
     ## barchart_1
-
     table_barchart_1 = df_bar_chart_1.loc[df_bar_chart_1['ars'] == dropdown_ars_barchart_1]
 
     layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
@@ -129,11 +128,9 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
                             layout_yaxis_range=[0,max(df_bar_chart_1['gasto_medicamentos'])])
 
     ## Execução dos diferentes gráficos
-
     return pie_chart, \
            bar_chart_1
 
 ## linha necessária par execuar a app
-
 if __name__ == '__main__':
     app.run_server(debug=True)
