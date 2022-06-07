@@ -89,6 +89,7 @@ app.layout = html.Div([
                     options=dropdown_ars_barchart_1,
                     value='norte'
                 ),
+                html.Br(),
                 dcc.Dropdown(
                     id='dropdown_ars_barchart_2',
                     options=dropdown_ars_barchart_2,
@@ -105,7 +106,9 @@ app.layout = html.Div([
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
-html.Div([
+    html.Br(),
+
+    html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
         ], className='row', style={'display': 'flex','text-align': 'center'}),
@@ -157,6 +160,7 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
 
     layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
                       yaxis=dict(title='Gastos em milhões de €'),
+                      xaxis=dict(title='Ano'),
                       paper_bgcolor='#f9f9f9'
                       )
     bar_chart_1 = go.Figure(data=[go.Bar(x=table_barchart_1['ano'], y=table_barchart_1['gasto_medicamentos'])],
@@ -169,6 +173,7 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
 
     layout_bar_2 = dict(title=dict(text='Gastros por ARS'),
                         yaxis=dict(title='Gastos em milhões de €'),
+                        xaxis=dict(title='ARS'),
                         paper_bgcolor='#FFFFFF'
                         )
     bar_chart_2 = go.Figure(data=[go.Bar(x=table_barchart_2['ars'], y=table_barchart_2['gasto_medicamentos'])],
@@ -178,11 +183,14 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
     ##line_chart_1
     ## https://plotly.com/python/line-charts/
 
+    ## ordenar o dataframe por ordem descendente de gastos para a legenda ficar bem
+    ## https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html
+    df_bar_chart_sorted = df_bar_chart.sort_values(by='gasto_medicamentos', ascending=False)
+
     ## a partir do dataframe original, saber qual é a lista de ARSs (.tolist) e remover os duplicados (.fromkeys)
     ## https://www.geeksforgeeks.org/get-a-list-of-a-particular-column-values-of-a-pandas-dataframe/
     ## https://www.w3schools.com/python/python_howto_remove_duplicates.asp
-    df_bar_chart.sort_values(by='gasto_medicamentos')
-    lista_de_arss = df_bar_chart['ars'].tolist()
+    lista_de_arss = df_bar_chart_sorted['ars'].tolist()
     lista_de_arss = list(dict.fromkeys(lista_de_arss))
     line_chart_1 = go.Figure()
 
