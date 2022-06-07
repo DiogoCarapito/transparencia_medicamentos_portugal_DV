@@ -7,7 +7,7 @@ path = ''
 df = pd.DataFrame(data=pd.read_csv(path + 'registo__doença_cardiaca.csv'))
 
 ## CSV para o bar chart 1
-df_bar_chart_1 = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
+df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
 radio_options_fumadores = [
     {'label': 'Todos', 'value': 'todos'},
@@ -23,8 +23,18 @@ dropdown_ars_barchart_1 = [
     {'label': 'Algarve', 'value': 'algarve'},
 ]
 
+## aqui o value tem que ser em integer porque aparentemente a exctração do CSV inicial interpreta os valores numéricos como integer, e para a logica lá em baixo funcionar tem que cuspir um inteiro e não um texto, ou então teria de necessitar de uma reconversão str par int
+dropdown_ars_barchart_2 = [
+    {'label': '2017', 'value': 2017},
+    {'label': '2018', 'value': 2018},
+    {'label': '2019', 'value': 2019},
+    {'label': '2020', 'value': 2020},
+    {'label': '2021', 'value': 2021},
+]
+
 app = Dash(__name__)
 
+## HTML em dash
 app.layout = html.Div([
     html.Div([
         html.Div([
@@ -78,11 +88,32 @@ app.layout = html.Div([
                     id='dropdown_ars_barchart_1',
                     options=dropdown_ars_barchart_1,
                     value='norte'
+                ),
+                dcc.Dropdown(
+                    id='dropdown_ars_barchart_2',
+                    options=dropdown_ars_barchart_2,
+                    value=2021
                 )
-            ], className='col2 ', style={'text-align': 'left','width':'34%','float': 'left'}),
+            ], className='col2 ', style={'text-align': 'left','width':'19%','float': 'left'}),
             html.Div([
                 dcc.Graph(id='bar_chart_1'),
-            ], className='col2', style={'width':'65%','float':'right'}),
+
+            ], className='col2', style={'width':'40%','float':'center'}),
+            html.Div([
+                dcc.Graph(id='bar_chart_2'),
+            ], className='col2', style={'width':'40%','float':'right'}),
+        ],className='row', style={'display': 'flex'}),
+    ], className='row container', style={'display': 'block'}),
+
+html.Div([
+        html.Div([
+            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        html.Br(),
+        html.Div([
+            html.Div([
+                dcc.Graph(id='line_chart_1'),
+            ]),
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
@@ -91,14 +122,20 @@ app.layout = html.Div([
 @app.callback(
     Output("pie_graph", "figure"),
     Output("bar_chart_1", "figure"),
+    Output("bar_chart_2", "figure"),
+    Output("line_chart_1", "figure"),
     Input("radio_filtro_fumadores", "value"),
-    Input("dropdown_ars_barchart_1", "value")
+    Input("dropdown_ars_barchart_1", "value"),
+    Input("dropdown_ars_barchart_2", "value")
 )
 
-def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
+def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_barchart_2):
 
-    ## logica para funcionamento do pie chart
+    ## foltro so para ter um dataframe com as colunas de HD e smoking através da função .groupby()
+    ## https://www.geeksforgeeks.org/pandas-groupby/
     tabela_freq = df.groupby(['HeartDisease', 'Smoking']).size().unstack()
+
+    ## logica para funcionamento do pie chart, filtro com logica booleana para
     if radio_filtro_fumadores == 'todos':
         sem_dc = tabela_freq.loc['No']['No'] + tabela_freq.loc['No']['Yes']
         com_dc = tabela_freq.loc['Yes']['No'] + tabela_freq.loc['Yes']['Yes']
@@ -115,7 +152,8 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
                      insidetextorientation='horizontal',showlegend=False)])
 
     ## barchart_1
-    table_barchart_1 = df_bar_chart_1.loc[df_bar_chart_1['ars'] == dropdown_ars_barchart_1]
+    ##filtro aplicado com a função .loc[] com logica para ter apenas dados da ars selecionada no dropdown menu correspondente
+    table_barchart_1 = df_bar_chart.loc[df_bar_chart['ars'] == dropdown_ars_barchart_1]
 
     layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
                       yaxis=dict(title='Gastos em milhões de €'),
@@ -123,11 +161,49 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1):
                       )
     bar_chart_1 = go.Figure(data=[go.Bar(x=table_barchart_1['ano'], y=table_barchart_1['gasto_medicamentos'])],
                             layout=layout_bar_1,
-                            layout_yaxis_range=[0,max(df_bar_chart_1['gasto_medicamentos'])])
+                            layout_yaxis_range=[0,max(df_bar_chart['gasto_medicamentos'])])
+
+    ## barchart_2
+    ##filtro aplicado com a função .loc[] com logica para ter apenas dados do ano selecionado no dropdown menu correspondente
+    table_barchart_2 = df_bar_chart.loc[df_bar_chart['ano'] == dropdown_ars_barchart_2]
+
+    layout_bar_2 = dict(title=dict(text='Gastros por ARS'),
+                        yaxis=dict(title='Gastos em milhões de €'),
+                        paper_bgcolor='#FFFFFF'
+                        )
+    bar_chart_2 = go.Figure(data=[go.Bar(x=table_barchart_2['ars'], y=table_barchart_2['gasto_medicamentos'])],
+                            layout=layout_bar_2,
+                            layout_yaxis_range=[0, max(df_bar_chart['gasto_medicamentos'])])
+
+    ##line_chart_1
+    ## https://plotly.com/python/line-charts/
+
+    ## a partir do dataframe original, saber qual é a lista de ARSs (.tolist) e remover os duplicados (.fromkeys)
+    ## https://www.geeksforgeeks.org/get-a-list-of-a-particular-column-values-of-a-pandas-dataframe/
+    ## https://www.w3schools.com/python/python_howto_remove_duplicates.asp
+    df_bar_chart.sort_values(by='gasto_medicamentos')
+    lista_de_arss = df_bar_chart['ars'].tolist()
+    lista_de_arss = list(dict.fromkeys(lista_de_arss))
+    line_chart_1 = go.Figure()
+
+    for ars in lista_de_arss:
+        ## codigo para filtrar (*.loc[*] == *)por ARS ao longo da lista de ars e alicação a uma linha no linechart
+        gastos_por_ars = df_bar_chart.loc[df_bar_chart['ars']==ars]
+        line_chart_1.add_trace(go.Scatter(x=gastos_por_ars['ano'], y=gastos_por_ars['gasto_medicamentos'],
+                                     mode='lines+markers',
+                                     name=ars))
+
+    line_chart_1.update_layout(title='Evolução dos gastos entre 2017 e 2021',
+                      xaxis_title='Anos',
+                      yaxis_title='Gastos em milhões de €',
+                      paper_bgcolor = '#FFFFFF')
+
 
     ## Execução dos diferentes gráficos
     return pie_chart, \
-           bar_chart_1
+           bar_chart_1, \
+           bar_chart_2, \
+           line_chart_1
 
 ## linha necessária par execuar a app
 if __name__ == '__main__':
