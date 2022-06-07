@@ -9,6 +9,10 @@ df = pd.DataFrame(data=pd.read_csv(path + 'registo__doença_cardiaca.csv'))
 ## CSV para o bar chart 1
 df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
+## CSV para o bar chart 1
+path = ''
+df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
+
 radio_options_fumadores = [
     {'label': 'Todos', 'value': 'todos'},
     {'label': 'Não Fumadores', 'value': 'n_fumadores'},
