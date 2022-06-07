@@ -134,7 +134,7 @@ app.layout = html.Div([
 
 def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_barchart_2):
 
-    ## foltro so para ter um dataframe com as colunas de HD e smoking através da função .groupby()
+    ## filtro so para ter um dataframe com as colunas de HD e smoking através da função .groupby()
     ## https://www.geeksforgeeks.org/pandas-groupby/
     tabela_freq = df.groupby(['HeartDisease', 'Smoking']).size().unstack()
 
@@ -154,8 +154,8 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
         data=[go.Pie(labels=df_contagens['categoria'], values=df_contagens['numero'], textinfo='label+percent',
                      insidetextorientation='horizontal',showlegend=False)])
 
-    ## barchart_1
-    ##filtro aplicado com a função .loc[] com logica para ter apenas dados da ars selecionada no dropdown menu correspondente
+    # barchart_1
+    ## filtro aplicado com a função .loc[] com logica para ter apenas dados da ars selecionada no dropdown menu correspondente
     table_barchart_1 = df_bar_chart.loc[df_bar_chart['ars'] == dropdown_ars_barchart_1]
 
     layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
@@ -167,8 +167,8 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
                             layout=layout_bar_1,
                             layout_yaxis_range=[0,max(df_bar_chart['gasto_medicamentos'])])
 
-    ## barchart_2
-    ##filtro aplicado com a função .loc[] com logica para ter apenas dados do ano selecionado no dropdown menu correspondente
+    # barchart_2
+    ## filtro aplicado com a função .loc[] com logica para ter apenas dados do ano selecionado no dropdown menu correspondente
     table_barchart_2 = df_bar_chart.loc[df_bar_chart['ano'] == dropdown_ars_barchart_2]
 
     layout_bar_2 = dict(title=dict(text='Gastros por ARS'),
@@ -180,7 +180,7 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
                             layout=layout_bar_2,
                             layout_yaxis_range=[0, max(df_bar_chart['gasto_medicamentos'])])
 
-    ##line_chart_1
+    # line_chart_1
     ## https://plotly.com/python/line-charts/
 
     ## ordenar o dataframe por ordem descendente de gastos para a legenda ficar bem
@@ -194,12 +194,19 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
     lista_de_arss = list(dict.fromkeys(lista_de_arss))
     line_chart_1 = go.Figure()
 
+    ## loop para percorrer cada uma das ARSs e desenhar a linha correspondente
+    ## https://plotly.com/python/line-charts/
     for ars in lista_de_arss:
+
         ## codigo para filtrar (*.loc[*] == *)por ARS ao longo da lista de ars e alicação a uma linha no linechart
         gastos_por_ars = df_bar_chart.loc[df_bar_chart['ars']==ars]
-        line_chart_1.add_trace(go.Scatter(x=gastos_por_ars['ano'], y=gastos_por_ars['gasto_medicamentos'],
-                                     mode='lines+markers',
-                                     name=ars))
+
+        ## parte que adiciona cada uma das linhas
+        line_chart_1.add_trace(go.Scatter(x=gastos_por_ars['ano'],
+                                          y=gastos_por_ars['gasto_medicamentos'],
+                                          mode='lines+markers',
+                                          name=ars,
+                                          line_shape='spline'))
 
     line_chart_1.update_layout(title='Evolução dos gastos entre 2017 e 2021',
                       xaxis_title='Anos',
