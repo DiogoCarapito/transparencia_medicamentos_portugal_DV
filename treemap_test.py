@@ -5,6 +5,10 @@ import plotly.graph_objects as go
 path = 'databases/'
 df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
 
+path = 'databases/'
+df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
+
+
 treemap_anos = list(dict.fromkeys(df_treemap['ano'].tolist()))
 year_slider = dcc.Slider(
     id = 'slider_ano',
