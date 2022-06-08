@@ -13,9 +13,6 @@ df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 path = ''
 df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
-path = 'databases/'
-df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
-
 radio_options_fumadores = [
     {'label': 'Todos', 'value': 'todos'},
     {'label': 'Não Fumadores', 'value': 'n_fumadores'},
@@ -38,15 +35,6 @@ dropdown_ars_barchart_2 = [
     {'label': '2020', 'value': 2020},
     {'label': '2021', 'value': 2021},
 ]
-
-treemap_checklist = dcc.Checklist(
-                    id='treemap_checklist',
-                    optios=[{'label': 'Norte', 'value': 'norte'},
-                            {'label': 'Centro', 'value': 'centro'},
-                            {'label': 'LVT', 'value': 'lvt'},
-                            {'label': 'Alentejo', 'value': 'alentejo'},
-                            {'label': 'Algarve', 'value': 'algarve'}],
-                    value='norte')
 
 app = Dash(__name__)
 
@@ -127,29 +115,15 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        ], className='row', style={'display': 'flex', 'text-align': 'center'}),
         html.Br(),
         html.Div([
             dcc.Graph(id='line_chart_1'),
-        ],className='row', style={'display': 'flex'}),
+        ], className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
-    html.Br(),
 
-    html.Div([
-        html.Div([
-            html.H3('Treemap')
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
-        html.Br(),
-        html.Div([
-            html.Div([
-                treemap_checklist
-            ], className='col2', style={'width': '19%', 'float': 'left'}),
-            html.Div([
-                dcc.Graph(id='treemap'),
-            ], className='col2', style={'width': '80%', 'float': 'right'}),
-        ], className='row', style={'display': 'flex','text-align': 'center'})
-    ], className='row container', style={'display': 'block'}),
+
 ])
 
 @app.callback(
@@ -157,14 +131,12 @@ app.layout = html.Div([
     Output("bar_chart_1", "figure"),
     Output("bar_chart_2", "figure"),
     Output("line_chart_1", "figure"),
-    Output("treemap", "figure"),
-    Input("treemap_checklist", "figure"),
     Input("radio_filtro_fumadores", "value"),
     Input("dropdown_ars_barchart_1", "value"),
     Input("dropdown_ars_barchart_2", "value")
 )
 
-def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_barchart_2,treemap_checklist):
+def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_barchart_2):
 
     ## filtro so para ter um dataframe com as colunas de HD e smoking através da função .groupby()
     ## https://www.geeksforgeeks.org/pandas-groupby/
@@ -246,14 +218,11 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
                       paper_bgcolor = '#FFFFFF')
 
 
-
-
     ## Execução dos diferentes gráficos
     return pie_chart, \
            bar_chart_1, \
            bar_chart_2, \
            line_chart_1
-
 
 ## linha necessária par execuar a app
 if __name__ == '__main__':
