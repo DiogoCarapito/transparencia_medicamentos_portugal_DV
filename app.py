@@ -41,7 +41,7 @@ dropdown_ars_barchart_2 = [
 
 treemap_checklist = dcc.Checklist(
                     id='treemap_checklist',
-                    optios=[{'label': 'Norte', 'value': 'norte'},
+                    options=[{'label': 'Norte', 'value': 'norte'},
                             {'label': 'Centro', 'value': 'centro'},
                             {'label': 'LVT', 'value': 'lvt'},
                             {'label': 'Alentejo', 'value': 'alentejo'},
@@ -245,14 +245,19 @@ def generate_chart(radio_filtro_fumadores,dropdown_ars_barchart_1,dropdown_ars_b
                       yaxis_title='Gastos em milhões de €',
                       paper_bgcolor = '#FFFFFF')
 
-
-
+    # Treemap
+    df_treemap
+    levels = ['ars','grupo_terapeutico']
+    color_columns = 'ars'
+    value_column = 'soma_encargos_sns_ambulatorio'
+    treemap = go.Figure(go.Treemap(
 
     ## Execução dos diferentes gráficos
     return pie_chart, \
            bar_chart_1, \
            bar_chart_2, \
-           line_chart_1
+           line_chart_1, \
+           treemap
 
 
 ## linha necessária par execuar a app
