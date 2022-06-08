@@ -55,25 +55,25 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2011,Centro,Sangue,14965613.73
 2011,Centro,Sistema nervoso central,75468532.94
 2011,Centro,Vacinas e imunoglobulinas,1016309.23
-2011,Lisboa,Aparelho cardiovascular,135481411.7
-2011,Lisboa,Aparelho digestivo,21778447.43
-2011,Lisboa,Aparelho geniturinário,7029410.45
-2011,Lisboa,Aparelho locomotor,28840288.13
-2011,Lisboa,Aparelho respiratório,28912232.84
-2011,Lisboa,Correctivos da volémia e das alterações electrolíticas,33368.05
-2011,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,66291317.16
-2011,Lisboa,Medicação antialérgica,2373547.9
-2011,Lisboa,Medicamentos anti-infecciosos,20678277.27
-2011,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3059851.78
-2011,Lisboa,Medicamentos usados em afecções cutâneas,3515644.36
-2011,Lisboa,Medicamentos usados em afecções  oculares,11409907.14
-2011,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1739152.31
-2011,Lisboa,Medicamentos usados no tratamento de intoxicações,54654.85
-2011,Lisboa,Meios de diagnóstico,0
-2011,Lisboa,Nutrição e metabolismo,765827.96
-2011,Lisboa,Sangue,17176222.87
-2011,Lisboa,Sistema nervoso central,106750892.1
-2011,Lisboa,Vacinas e imunoglobulinas,1313130.91
+2011,LVT,Aparelho cardiovascular,135481411.7
+2011,LVT,Aparelho digestivo,21778447.43
+2011,LVT,Aparelho geniturinário,7029410.45
+2011,LVT,Aparelho locomotor,28840288.13
+2011,LVT,Aparelho respiratório,28912232.84
+2011,LVT,Correctivos da volémia e das alterações electrolíticas,33368.05
+2011,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,66291317.16
+2011,LVT,Medicação antialérgica,2373547.9
+2011,LVT,Medicamentos anti-infecciosos,20678277.27
+2011,LVT,Medicamentos antineoplásicos e imunomoduladores,3059851.78
+2011,LVT,Medicamentos usados em afecções cutâneas,3515644.36
+2011,LVT,Medicamentos usados em afecções  oculares,11409907.14
+2011,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1739152.31
+2011,LVT,Medicamentos usados no tratamento de intoxicações,54654.85
+2011,LVT,Meios de diagnóstico,0
+2011,LVT,Nutrição e metabolismo,765827.96
+2011,LVT,Sangue,17176222.87
+2011,LVT,Sistema nervoso central,106750892.1
+2011,LVT,Vacinas e imunoglobulinas,1313130.91
 2011,Norte,Aparelho cardiovascular,116556270.4
 2011,Norte,Aparelho digestivo,19408538.14
 2011,Norte,Aparelho geniturinário,6830440
@@ -148,25 +148,25 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2012,Centro,Sangue,11668089.15
 2012,Centro,Sistema nervoso central,67662559.63
 2012,Centro,Vacinas e imunoglobulinas,546102.01
-2012,Lisboa,Aparelho cardiovascular,114554030
-2012,Lisboa,Aparelho digestivo,12608989.88
-2012,Lisboa,Aparelho geniturinário,6080945.12
-2012,Lisboa,Aparelho locomotor,24248331.37
-2012,Lisboa,Aparelho respiratório,29017335.54
-2012,Lisboa,Correctivos da volémia e das alterações electrolíticas,29504.26
-2012,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,67904953.19
-2012,Lisboa,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
-2012,Lisboa,Medicação antialérgica,1989803.35
-2012,Lisboa,Medicamentos anti-infecciosos,17252624.58
-2012,Lisboa,Medicamentos antineoplásicos e imunomoduladores,2769860.16
-2012,Lisboa,Medicamentos usados em afecções cutâneas,3531934.32
-2012,Lisboa,Medicamentos usados em afecções  oculares,11139606.56
-2012,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1652406.13
-2012,Lisboa,Medicamentos usados no tratamento de intoxicações,48346.7
-2012,Lisboa,Nutrição e metabolismo,676256.16
-2012,Lisboa,Sangue,13536875.86
-2012,Lisboa,Sistema nervoso central,95282087.4
-2012,Lisboa,Vacinas e imunoglobulinas,886882.84
+2012,LVT,Aparelho cardiovascular,114554030
+2012,LVT,Aparelho digestivo,12608989.88
+2012,LVT,Aparelho geniturinário,6080945.12
+2012,LVT,Aparelho locomotor,24248331.37
+2012,LVT,Aparelho respiratório,29017335.54
+2012,LVT,Correctivos da volémia e das alterações electrolíticas,29504.26
+2012,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,67904953.19
+2012,LVT,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
+2012,LVT,Medicação antialérgica,1989803.35
+2012,LVT,Medicamentos anti-infecciosos,17252624.58
+2012,LVT,Medicamentos antineoplásicos e imunomoduladores,2769860.16
+2012,LVT,Medicamentos usados em afecções cutâneas,3531934.32
+2012,LVT,Medicamentos usados em afecções  oculares,11139606.56
+2012,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1652406.13
+2012,LVT,Medicamentos usados no tratamento de intoxicações,48346.7
+2012,LVT,Nutrição e metabolismo,676256.16
+2012,LVT,Sangue,13536875.86
+2012,LVT,Sistema nervoso central,95282087.4
+2012,LVT,Vacinas e imunoglobulinas,886882.84
 2012,Norte,Aparelho cardiovascular,99660108.49
 2012,Norte,Aparelho digestivo,12025101.35
 2012,Norte,Aparelho geniturinário,6126896.38
@@ -240,24 +240,24 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2013,Centro,Sangue,13702935.59
 2013,Centro,Sistema nervoso central,64300872.69
 2013,Centro,Vacinas e imunoglobulinas,430719.43
-2013,Lisboa,Aparelho cardiovascular,105009949.9
-2013,Lisboa,Aparelho digestivo,12410812.07
-2013,Lisboa,Aparelho geniturinário,6659879.89
-2013,Lisboa,Aparelho locomotor,23072381.23
-2013,Lisboa,Aparelho respiratório,30937150.1
-2013,Lisboa,Correctivos da volémia e das alterações electrolíticas,32956.77
-2013,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,75543379.23
-2013,Lisboa,Medicação antialérgica,1839112.06
-2013,Lisboa,Medicamentos anti-infecciosos,17495330.2
-2013,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3010765
-2013,Lisboa,Medicamentos usados em afecções cutâneas,3824507.51
-2013,Lisboa,Medicamentos usados em afecções  oculares,11465339.15
-2013,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1916414.9
-2013,Lisboa,Medicamentos usados no tratamento de intoxicações,150115.55
-2013,Lisboa,Nutrição e metabolismo,754575.58
-2013,Lisboa,Sangue,16843837.19
-2013,Lisboa,Sistema nervoso central,93627710.76
-2013,Lisboa,Vacinas e imunoglobulinas,811968.85
+2013,LVT,Aparelho cardiovascular,105009949.9
+2013,LVT,Aparelho digestivo,12410812.07
+2013,LVT,Aparelho geniturinário,6659879.89
+2013,LVT,Aparelho locomotor,23072381.23
+2013,LVT,Aparelho respiratório,30937150.1
+2013,LVT,Correctivos da volémia e das alterações electrolíticas,32956.77
+2013,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,75543379.23
+2013,LVT,Medicação antialérgica,1839112.06
+2013,LVT,Medicamentos anti-infecciosos,17495330.2
+2013,LVT,Medicamentos antineoplásicos e imunomoduladores,3010765
+2013,LVT,Medicamentos usados em afecções cutâneas,3824507.51
+2013,LVT,Medicamentos usados em afecções  oculares,11465339.15
+2013,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1916414.9
+2013,LVT,Medicamentos usados no tratamento de intoxicações,150115.55
+2013,LVT,Nutrição e metabolismo,754575.58
+2013,LVT,Sangue,16843837.19
+2013,LVT,Sistema nervoso central,93627710.76
+2013,LVT,Vacinas e imunoglobulinas,811968.85
 2013,Norte,Aparelho cardiovascular,90196011.97
 2013,Norte,Aparelho digestivo,11725252.75
 2013,Norte,Aparelho geniturinário,6517401.66
@@ -332,25 +332,25 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2014,Centro,Sangue,17294487.07
 2014,Centro,Sistema nervoso central,66422631.42
 2014,Centro,Vacinas e imunoglobulinas,405405.36
-2014,Lisboa,Aparelho cardiovascular,99833392.19
-2014,Lisboa,Aparelho digestivo,12387085.07
-2014,Lisboa,Aparelho geniturinário,7232808.41
-2014,Lisboa,Aparelho locomotor,20691686.43
-2014,Lisboa,Aparelho respiratório,29080518.36
-2014,Lisboa,Correctivos da volémia e das alterações electrolíticas,38808.86
-2014,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,79956398.55
-2014,Lisboa,Medicação antialérgica,2307072.2
-2014,Lisboa,Medicamentos anti-infecciosos,17429283.72
-2014,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3395932.2
-2014,Lisboa,Medicamentos usados em afecções cutâneas,4134680.64
-2014,Lisboa,Medicamentos usados em afecções  oculares,10792872.72
-2014,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1961740.42
-2014,Lisboa,Medicamentos usados no tratamento de intoxicações,319149.45
-2014,Lisboa,Meios de diagnóstico,0
-2014,Lisboa,Nutrição e metabolismo,277468.89
-2014,Lisboa,Sangue,21061033.35
-2014,Lisboa,Sistema nervoso central,97257882.07
-2014,Lisboa,Vacinas e imunoglobulinas,773551.23
+2014,LVT,Aparelho cardiovascular,99833392.19
+2014,LVT,Aparelho digestivo,12387085.07
+2014,LVT,Aparelho geniturinário,7232808.41
+2014,LVT,Aparelho locomotor,20691686.43
+2014,LVT,Aparelho respiratório,29080518.36
+2014,LVT,Correctivos da volémia e das alterações electrolíticas,38808.86
+2014,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,79956398.55
+2014,LVT,Medicação antialérgica,2307072.2
+2014,LVT,Medicamentos anti-infecciosos,17429283.72
+2014,LVT,Medicamentos antineoplásicos e imunomoduladores,3395932.2
+2014,LVT,Medicamentos usados em afecções cutâneas,4134680.64
+2014,LVT,Medicamentos usados em afecções  oculares,10792872.72
+2014,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1961740.42
+2014,LVT,Medicamentos usados no tratamento de intoxicações,319149.45
+2014,LVT,Meios de diagnóstico,0
+2014,LVT,Nutrição e metabolismo,277468.89
+2014,LVT,Sangue,21061033.35
+2014,LVT,Sistema nervoso central,97257882.07
+2014,LVT,Vacinas e imunoglobulinas,773551.23
 2014,Norte,Aparelho cardiovascular,86176609.54
 2014,Norte,Aparelho digestivo,11886520.44
 2014,Norte,Aparelho geniturinário,7101617.5
@@ -424,24 +424,24 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2015,Centro,Sangue,22830943.37
 2015,Centro,Sistema nervoso central,64907753.68
 2015,Centro,Vacinas e imunoglobulinas,532027.86
-2015,Lisboa,Aparelho cardiovascular,92874475.8
-2015,Lisboa,Aparelho digestivo,12233588.62
-2015,Lisboa,Aparelho geniturinário,7341055.13
-2015,Lisboa,Aparelho locomotor,18967486.28
-2015,Lisboa,Aparelho respiratório,30380370.03
-2015,Lisboa,Correctivos da volémia e das alterações electrolíticas,45234.88
-2015,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,86242830.83
-2015,Lisboa,Medicação antialérgica,2460119.12
-2015,Lisboa,Medicamentos anti-infecciosos,16938658.09
-2015,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3569228.55
-2015,Lisboa,Medicamentos usados em afecções cutâneas,4246428.57
-2015,Lisboa,Medicamentos usados em afecções  oculares,11321634.23
-2015,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1450692.94
-2015,Lisboa,Medicamentos usados no tratamento de intoxicações,368733.08
-2015,Lisboa,Nutrição e metabolismo,305354.95
-2015,Lisboa,Sangue,27649324.03
-2015,Lisboa,Sistema nervoso central,94836625.04
-2015,Lisboa,Vacinas e imunoglobulinas,1018598.9
+2015,LVT,Aparelho cardiovascular,92874475.8
+2015,LVT,Aparelho digestivo,12233588.62
+2015,LVT,Aparelho geniturinário,7341055.13
+2015,LVT,Aparelho locomotor,18967486.28
+2015,LVT,Aparelho respiratório,30380370.03
+2015,LVT,Correctivos da volémia e das alterações electrolíticas,45234.88
+2015,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,86242830.83
+2015,LVT,Medicação antialérgica,2460119.12
+2015,LVT,Medicamentos anti-infecciosos,16938658.09
+2015,LVT,Medicamentos antineoplásicos e imunomoduladores,3569228.55
+2015,LVT,Medicamentos usados em afecções cutâneas,4246428.57
+2015,LVT,Medicamentos usados em afecções  oculares,11321634.23
+2015,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1450692.94
+2015,LVT,Medicamentos usados no tratamento de intoxicações,368733.08
+2015,LVT,Nutrição e metabolismo,305354.95
+2015,LVT,Sangue,27649324.03
+2015,LVT,Sistema nervoso central,94836625.04
+2015,LVT,Vacinas e imunoglobulinas,1018598.9
 2015,Norte,Aparelho cardiovascular,80638312.34
 2015,Norte,Aparelho digestivo,11901579.38
 2015,Norte,Aparelho geniturinário,7281483.96
@@ -515,24 +515,24 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2016,Centro,Sangue,28580098.14
 2016,Centro,Sistema nervoso central,61227431.14
 2016,Centro,Vacinas e imunoglobulinas,536954.64
-2016,Lisboa,Aparelho cardiovascular,89608604.02
-2016,Lisboa,Aparelho digestivo,12648660.17
-2016,Lisboa,Aparelho geniturinário,7494757.69
-2016,Lisboa,Aparelho locomotor,17924677.15
-2016,Lisboa,Aparelho respiratório,30877878.28
-2016,Lisboa,Correctivos da volémia e das alterações electrolíticas,42088.19
-2016,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,89998332.63
-2016,Lisboa,Medicação antialérgica,2538316.64
-2016,Lisboa,Medicamentos anti-infecciosos,16895948.74
-2016,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3630423.68
-2016,Lisboa,Medicamentos usados em afecções cutâneas,4068458.48
-2016,Lisboa,Medicamentos usados em afecções  oculares,11391334.37
-2016,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1326573.41
-2016,Lisboa,Medicamentos usados no tratamento de intoxicações,356331.5
-2016,Lisboa,Nutrição e metabolismo,744646.14
-2016,Lisboa,Sangue,34286778.3
-2016,Lisboa,Sistema nervoso central,89004031.54
-2016,Lisboa,Vacinas e imunoglobulinas,1039381.05
+2016,LVT,Aparelho cardiovascular,89608604.02
+2016,LVT,Aparelho digestivo,12648660.17
+2016,LVT,Aparelho geniturinário,7494757.69
+2016,LVT,Aparelho locomotor,17924677.15
+2016,LVT,Aparelho respiratório,30877878.28
+2016,LVT,Correctivos da volémia e das alterações electrolíticas,42088.19
+2016,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,89998332.63
+2016,LVT,Medicação antialérgica,2538316.64
+2016,LVT,Medicamentos anti-infecciosos,16895948.74
+2016,LVT,Medicamentos antineoplásicos e imunomoduladores,3630423.68
+2016,LVT,Medicamentos usados em afecções cutâneas,4068458.48
+2016,LVT,Medicamentos usados em afecções  oculares,11391334.37
+2016,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1326573.41
+2016,LVT,Medicamentos usados no tratamento de intoxicações,356331.5
+2016,LVT,Nutrição e metabolismo,744646.14
+2016,LVT,Sangue,34286778.3
+2016,LVT,Sistema nervoso central,89004031.54
+2016,LVT,Vacinas e imunoglobulinas,1039381.05
 2016,Norte,Aparelho cardiovascular,78080117.67
 2016,Norte,Aparelho digestivo,12521817.78
 2016,Norte,Aparelho geniturinário,7501628.88
@@ -606,25 +606,25 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2017,Centro,Sangue,34825078.83
 2017,Centro,Sistema nervoso central,62847397.62
 2017,Centro,Vacinas e imunoglobulinas,477597.01
-2017,Lisboa,Aparelho cardiovascular,84077089.25
-2017,Lisboa,Aparelho digestivo,12465480.02
-2017,Lisboa,Aparelho geniturinário,7566441.62
-2017,Lisboa,Aparelho locomotor,16148020.23
-2017,Lisboa,Aparelho respiratório,31094101.44
-2017,Lisboa,Correctivos da volémia e das alterações electrolíticas,37669.31
-2017,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,94772142
-2017,Lisboa,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
-2017,Lisboa,Medicação antialérgica,2497318.22
-2017,Lisboa,Medicamentos anti-infecciosos,15876054.12
-2017,Lisboa,Medicamentos antineoplásicos e imunomoduladores,4286205.01
-2017,Lisboa,Medicamentos usados em afecções cutâneas,4062733.99
-2017,Lisboa,Medicamentos usados em afecções  oculares,11603726.67
-2017,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1178238.22
-2017,Lisboa,Medicamentos usados no tratamento de intoxicações,359529.86
-2017,Lisboa,Nutrição e metabolismo,866506.87
-2017,Lisboa,Sangue,41321704.16
-2017,Lisboa,Sistema nervoso central,89997702.54
-2017,Lisboa,Vacinas e imunoglobulinas,890468.26
+2017,LVT,Aparelho cardiovascular,84077089.25
+2017,LVT,Aparelho digestivo,12465480.02
+2017,LVT,Aparelho geniturinário,7566441.62
+2017,LVT,Aparelho locomotor,16148020.23
+2017,LVT,Aparelho respiratório,31094101.44
+2017,LVT,Correctivos da volémia e das alterações electrolíticas,37669.31
+2017,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,94772142
+2017,LVT,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
+2017,LVT,Medicação antialérgica,2497318.22
+2017,LVT,Medicamentos anti-infecciosos,15876054.12
+2017,LVT,Medicamentos antineoplásicos e imunomoduladores,4286205.01
+2017,LVT,Medicamentos usados em afecções cutâneas,4062733.99
+2017,LVT,Medicamentos usados em afecções  oculares,11603726.67
+2017,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1178238.22
+2017,LVT,Medicamentos usados no tratamento de intoxicações,359529.86
+2017,LVT,Nutrição e metabolismo,866506.87
+2017,LVT,Sangue,41321704.16
+2017,LVT,Sistema nervoso central,89997702.54
+2017,LVT,Vacinas e imunoglobulinas,890468.26
 2017,Norte,Aparelho cardiovascular,74218068.57
 2017,Norte,Aparelho digestivo,12672513.05
 2017,Norte,Aparelho geniturinário,7567083.3
@@ -697,24 +697,24 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2018,Centro,Sangue,37363321.03
 2018,Centro,Sistema nervoso central,58595504.48
 2018,Centro,Vacinas e imunoglobulinas,681873.29
-2018,Lisboa,Aparelho cardiovascular,76849485.86
-2018,Lisboa,Aparelho digestivo,12853434.85
-2018,Lisboa,Aparelho geniturinário,7739971.07
-2018,Lisboa,Aparelho locomotor,16845763.2
-2018,Lisboa,Aparelho respiratório,32000004.51
-2018,Lisboa,Correctivos da volémia e das alterações electrolíticas,34097.68
-2018,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,105547724.6
-2018,Lisboa,Medicação antialérgica,2685072.64
-2018,Lisboa,Medicamentos anti-infecciosos,15753239.41
-2018,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3094354.76
-2018,Lisboa,Medicamentos usados em afecções cutâneas,4451409.58
-2018,Lisboa,Medicamentos usados em afecções  oculares,12130855.66
-2018,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,2147502.43
-2018,Lisboa,Medicamentos usados no tratamento de intoxicações,461325.48
-2018,Lisboa,Nutrição e metabolismo,861362.38
-2018,Lisboa,Sangue,48422712.97
-2018,Lisboa,Sistema nervoso central,93205791.3
-2018,Lisboa,Vacinas e imunoglobulinas,1272479.22
+2018,LVT,Aparelho cardiovascular,76849485.86
+2018,LVT,Aparelho digestivo,12853434.85
+2018,LVT,Aparelho geniturinário,7739971.07
+2018,LVT,Aparelho locomotor,16845763.2
+2018,LVT,Aparelho respiratório,32000004.51
+2018,LVT,Correctivos da volémia e das alterações electrolíticas,34097.68
+2018,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,105547724.6
+2018,LVT,Medicação antialérgica,2685072.64
+2018,LVT,Medicamentos anti-infecciosos,15753239.41
+2018,LVT,Medicamentos antineoplásicos e imunomoduladores,3094354.76
+2018,LVT,Medicamentos usados em afecções cutâneas,4451409.58
+2018,LVT,Medicamentos usados em afecções  oculares,12130855.66
+2018,LVT,Medicamentos usados em afecções  otorrinolaringológicas,2147502.43
+2018,LVT,Medicamentos usados no tratamento de intoxicações,461325.48
+2018,LVT,Nutrição e metabolismo,861362.38
+2018,LVT,Sangue,48422712.97
+2018,LVT,Sistema nervoso central,93205791.3
+2018,LVT,Vacinas e imunoglobulinas,1272479.22
 2018,Norte,Aparelho cardiovascular,72507230.8
 2018,Norte,Aparelho digestivo,13819152.6
 2018,Norte,Aparelho geniturinário,8072377.09
@@ -787,24 +787,24 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2019,Centro,Sangue,38146449.28
 2019,Centro,Sistema nervoso central,54736062.74
 2019,Centro,Vacinas e imunoglobulinas,849236.23
-2019,Lisboa,Aparelho cardiovascular,77037422.56
-2019,Lisboa,Aparelho digestivo,13349239.02
-2019,Lisboa,Aparelho geniturinário,8167837.6
-2019,Lisboa,Aparelho locomotor,16812402.48
-2019,Lisboa,Aparelho respiratório,34039902.07
-2019,Lisboa,Correctivos da volémia e das alterações electrolíticas,26339.95
-2019,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,118594939.1
-2019,Lisboa,Medicação antialérgica,2839952.97
-2019,Lisboa,Medicamentos anti-infecciosos,15587702.75
-2019,Lisboa,Medicamentos antineoplásicos e imunomoduladores,3049490.54
-2019,Lisboa,Medicamentos usados em afecções cutâneas,4711914.8
-2019,Lisboa,Medicamentos usados em afecções  oculares,12418234.32
-2019,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,2250796.13
-2019,Lisboa,Medicamentos usados no tratamento de intoxicações,464066.78
-2019,Lisboa,Nutrição e metabolismo,901026.43
-2019,Lisboa,Sangue,55097251.64
-2019,Lisboa,Sistema nervoso central,98451827.05
-2019,Lisboa,Vacinas e imunoglobulinas,1683807.48
+2019,LVT,Aparelho cardiovascular,77037422.56
+2019,LVT,Aparelho digestivo,13349239.02
+2019,LVT,Aparelho geniturinário,8167837.6
+2019,LVT,Aparelho locomotor,16812402.48
+2019,LVT,Aparelho respiratório,34039902.07
+2019,LVT,Correctivos da volémia e das alterações electrolíticas,26339.95
+2019,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,118594939.1
+2019,LVT,Medicação antialérgica,2839952.97
+2019,LVT,Medicamentos anti-infecciosos,15587702.75
+2019,LVT,Medicamentos antineoplásicos e imunomoduladores,3049490.54
+2019,LVT,Medicamentos usados em afecções cutâneas,4711914.8
+2019,LVT,Medicamentos usados em afecções  oculares,12418234.32
+2019,LVT,Medicamentos usados em afecções  otorrinolaringológicas,2250796.13
+2019,LVT,Medicamentos usados no tratamento de intoxicações,464066.78
+2019,LVT,Nutrição e metabolismo,901026.43
+2019,LVT,Sangue,55097251.64
+2019,LVT,Sistema nervoso central,98451827.05
+2019,LVT,Vacinas e imunoglobulinas,1683807.48
 2019,Norte,Aparelho cardiovascular,76574285.81
 2019,Norte,Aparelho digestivo,14905681.52
 2019,Norte,Aparelho geniturinário,8923977.07
@@ -881,26 +881,26 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2020,Centro,Sangue,48305270.69
 2020,Centro,Sistema nervoso central,70262002.47
 2020,Centro,Vacinas e imunoglobulinas,1717199.04
-2020,Lisboa,Aparelho cardiovascular,77862145.8
-2020,Lisboa,Aparelho digestivo,12790875.68
-2020,Lisboa,Aparelho geniturinário,6672886.24
-2020,Lisboa,Aparelho locomotor,13580678
-2020,Lisboa,Aparelho respiratório,34342979.11
-2020,Lisboa,Correctivos da volémia e das alterações electrolíticas,26808.36
-2020,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,123770857.3
-2020,Lisboa,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
-2020,Lisboa,Medicação antialérgica,2260132.1
-2020,Lisboa,Medicamentos anti-infecciosos,11675640.99
-2020,Lisboa,Medicamentos antineoplásicos e imunomoduladores,2871567.59
-2020,Lisboa,Medicamentos usados em afecções cutâneas,4215133.8
-2020,Lisboa,Medicamentos usados em afecções  oculares,11435535.12
-2020,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,1782336.75
-2020,Lisboa,Medicamentos usados no tratamento de intoxicações,524930.02
-2020,Lisboa,Não Carregado,17408.87
-2020,Lisboa,Nutrição e metabolismo,899038.2
-2020,Lisboa,Sangue,54949756.56
-2020,Lisboa,Sistema nervoso central,98767871.43
-2020,Lisboa,Vacinas e imunoglobulinas,2390674.14
+2020,LVT,Aparelho cardiovascular,77862145.8
+2020,LVT,Aparelho digestivo,12790875.68
+2020,LVT,Aparelho geniturinário,6672886.24
+2020,LVT,Aparelho locomotor,13580678
+2020,LVT,Aparelho respiratório,34342979.11
+2020,LVT,Correctivos da volémia e das alterações electrolíticas,26808.36
+2020,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,123770857.3
+2020,LVT,Material de penso. hemostáticos locais. gases medicinais e outros produtos,0
+2020,LVT,Medicação antialérgica,2260132.1
+2020,LVT,Medicamentos anti-infecciosos,11675640.99
+2020,LVT,Medicamentos antineoplásicos e imunomoduladores,2871567.59
+2020,LVT,Medicamentos usados em afecções cutâneas,4215133.8
+2020,LVT,Medicamentos usados em afecções  oculares,11435535.12
+2020,LVT,Medicamentos usados em afecções  otorrinolaringológicas,1782336.75
+2020,LVT,Medicamentos usados no tratamento de intoxicações,524930.02
+2020,LVT,Não Carregado,17408.87
+2020,LVT,Nutrição e metabolismo,899038.2
+2020,LVT,Sangue,54949756.56
+2020,LVT,Sistema nervoso central,98767871.43
+2020,LVT,Vacinas e imunoglobulinas,2390674.14
 2020,Norte,Aparelho cardiovascular,72359896.61
 2020,Norte,Aparelho digestivo,13341534.71
 2020,Norte,Aparelho geniturinário,7073932.06
@@ -979,26 +979,26 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2021,Centro,Sangue,51349098.14
 2021,Centro,Sistema nervoso central,72526531.53
 2021,Centro,Vacinas e imunoglobulinas,1278827.45
-2021,Lisboa,Aparelho cardiovascular,81315483.5
-2021,Lisboa,Aparelho digestivo,13193799.11
-2021,Lisboa,Aparelho geniturinário,5982281.59
-2021,Lisboa,Aparelho locomotor,14517861.27
-2021,Lisboa,Aparelho respiratório,33366911.18
-2021,Lisboa,Correctivos da volémia e das alterações electrolíticas,32419.43
-2021,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,135243520.7
-2021,Lisboa,Material de penso. hemostáticos locais. gases medicinais e outros produtos,65.24
-2021,Lisboa,Medicação antialérgica,2465163.52
-2021,Lisboa,Medicamentos anti-infecciosos,12072372.37
-2021,Lisboa,Medicamentos antineoplásicos e imunomoduladores,2777530.02
-2021,Lisboa,Medicamentos usados em afecções cutâneas,4439789.55
-2021,Lisboa,Medicamentos usados em afecções  oculares,11546203.54
-2021,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,2085350.95
-2021,Lisboa,Medicamentos usados no tratamento de intoxicações,491345.18
-2021,Lisboa,Não Carregado,8923.79
-2021,Lisboa,Nutrição e metabolismo,1135192.21
-2021,Lisboa,Sangue,58650503.3
-2021,Lisboa,Sistema nervoso central,101559062.6
-2021,Lisboa,Vacinas e imunoglobulinas,1919785.25
+2021,LVT,Aparelho cardiovascular,81315483.5
+2021,LVT,Aparelho digestivo,13193799.11
+2021,LVT,Aparelho geniturinário,5982281.59
+2021,LVT,Aparelho locomotor,14517861.27
+2021,LVT,Aparelho respiratório,33366911.18
+2021,LVT,Correctivos da volémia e das alterações electrolíticas,32419.43
+2021,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,135243520.7
+2021,LVT,Material de penso. hemostáticos locais. gases medicinais e outros produtos,65.24
+2021,LVT,Medicação antialérgica,2465163.52
+2021,LVT,Medicamentos anti-infecciosos,12072372.37
+2021,LVT,Medicamentos antineoplásicos e imunomoduladores,2777530.02
+2021,LVT,Medicamentos usados em afecções cutâneas,4439789.55
+2021,LVT,Medicamentos usados em afecções  oculares,11546203.54
+2021,LVT,Medicamentos usados em afecções  otorrinolaringológicas,2085350.95
+2021,LVT,Medicamentos usados no tratamento de intoxicações,491345.18
+2021,LVT,Não Carregado,8923.79
+2021,LVT,Nutrição e metabolismo,1135192.21
+2021,LVT,Sangue,58650503.3
+2021,LVT,Sistema nervoso central,101559062.6
+2021,LVT,Vacinas e imunoglobulinas,1919785.25
 2021,Norte,Aparelho cardiovascular,77044757.64
 2021,Norte,Aparelho digestivo,13835978.42
 2021,Norte,Aparelho geniturinário,6586214.26
@@ -1074,25 +1074,25 @@ ano,ars,grupo_terapeutico,soma_encargos_sns_ambulatorio
 2022,Centro,Sangue,13211247.31
 2022,Centro,Sistema nervoso central,18125869.72
 2022,Centro,Vacinas e imunoglobulinas,337057.74
-2022,Lisboa,Aparelho cardiovascular,21467600.61
-2022,Lisboa,Aparelho digestivo,3496092.69
-2022,Lisboa,Aparelho geniturinário,1601283.94
-2022,Lisboa,Aparelho locomotor,3936116.55
-2022,Lisboa,Aparelho respiratório,8829479.52
-2022,Lisboa,Correctivos da volémia e das alterações electrolíticas,10132.82
-2022,Lisboa,Hormonas e medicamentos usados no tratamento das doenças endócrinas,37921517.85
-2022,Lisboa,Material de penso. hemostáticos locais. gases medicinais e outros produtos,23.4
-2022,Lisboa,Medicação antialérgica,681176.76
-2022,Lisboa,Medicamentos anti-infecciosos,3534164.72
-2022,Lisboa,Medicamentos antineoplásicos e imunomoduladores,708017.08
-2022,Lisboa,Medicamentos usados em afecções cutâneas,1162170.3
-2022,Lisboa,Medicamentos usados em afecções  oculares,2957926.6
-2022,Lisboa,Medicamentos usados em afecções  otorrinolaringológicas,653924.66
-2022,Lisboa,Medicamentos usados no tratamento de intoxicações,151029.85
-2022,Lisboa,Nutrição e metabolismo,336267.08
-2022,Lisboa,Sangue,15483250.47
-2022,Lisboa,Sistema nervoso central,25714716.14
-2022,Lisboa,Vacinas e imunoglobulinas,390726.46
+2022,LVT,Aparelho cardiovascular,21467600.61
+2022,LVT,Aparelho digestivo,3496092.69
+2022,LVT,Aparelho geniturinário,1601283.94
+2022,LVT,Aparelho locomotor,3936116.55
+2022,LVT,Aparelho respiratório,8829479.52
+2022,LVT,Correctivos da volémia e das alterações electrolíticas,10132.82
+2022,LVT,Hormonas e medicamentos usados no tratamento das doenças endócrinas,37921517.85
+2022,LVT,Material de penso. hemostáticos locais. gases medicinais e outros produtos,23.4
+2022,LVT,Medicação antialérgica,681176.76
+2022,LVT,Medicamentos anti-infecciosos,3534164.72
+2022,LVT,Medicamentos antineoplásicos e imunomoduladores,708017.08
+2022,LVT,Medicamentos usados em afecções cutâneas,1162170.3
+2022,LVT,Medicamentos usados em afecções  oculares,2957926.6
+2022,LVT,Medicamentos usados em afecções  otorrinolaringológicas,653924.66
+2022,LVT,Medicamentos usados no tratamento de intoxicações,151029.85
+2022,LVT,Nutrição e metabolismo,336267.08
+2022,LVT,Sangue,15483250.47
+2022,LVT,Sistema nervoso central,25714716.14
+2022,LVT,Vacinas e imunoglobulinas,390726.46
 2022,Norte,Aparelho cardiovascular,20109017.5
 2022,Norte,Aparelho digestivo,3625529.01
 2022,Norte,Aparelho geniturinário,1725682.14
