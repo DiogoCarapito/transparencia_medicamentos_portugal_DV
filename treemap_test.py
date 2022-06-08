@@ -3,11 +3,11 @@ from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objects as go
 import plotly.express as px
 
-'''path = 'databases/'
-df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))'''
+path = 'databases/'
+df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
 
-path =''
-df_treemap = pd.DataFrame(data=pd.read_csv(path + 'grupos_medicamentos_dummy.csv'))
+'''path =''
+df_treemap = pd.DataFrame(data=pd.read_csv(path + 'grupos_medicamentos_dummy.csv'))'''
 
 
 treemap_anos = list(dict.fromkeys(df_treemap['ano'].tolist()))
@@ -37,31 +37,6 @@ def generate_chart(slider_ano):
 
     treemap_selection = df_treemap.loc[df_treemap['ano'] == slider_ano]
     treemap_selection_sorted = treemap_selection.sort_values(by='soma_encargos_sns_ambulatorio', ascending=False)
-    lista_ars = treemap_selection_sorted['ars'].tolist()
-    lista_ars = list(dict.fromkeys(lista_ars))
-
-    '''for ite, row in treemap_selection.iterrows():
-        print(row['ars'], row['grupo_terapeutico'], row['soma_encargos_sns_ambulatorio'])'''
-
-    labels = ['Nacional', 'LVT', 'Norte', 'respiratório', 'cardiovascular', 'respiratório', 'cardiovascular']
-    #values = [sum(treemap_selection['soma_encargos_sns_ambulatorio'])]
-    values = [0, 0, 0,  6, 4,3, 9]
-    parents = ['', 'Nacional', 'Nacional',  'LVT', 'LVT','Norte', 'Norte' ]
-
-
-
-    '''for each in lista_ars:
-        ars = treemap_selection.loc[treemap_selection['ars'] == each]
-        for ite, row in ars.iterrows():
-            labels = row['grupo_terapeutico']
-            values = row['soma_encargos_sns_ambulatorio']
-            parents = each'''
-
-    '''labels = ['Nacinoal'] + lista_ars + treemap_selection['grupo_terapeutico'].tolist()
-    values = ['0','0','0','0','0','0'] + treemap_selection['soma_encargos_sns_ambulatorio'].tolist()
-    parents =['', 'Nacinoal', 'Nacinoal', 'Nacinoal', 'Nacinoal', 'Nacinoal'] + treemap_selection['ars'].tolist()'''
-
-    '''treemap_selection_sorted = treemap_selection.sort_values(by='soma_encargos_sns_ambulatorio', ascending=False)
     lista_grupos_terapeuticos = treemap_selection_sorted['grupo_terapeutico'].tolist()
     lista_grupos_terapeuticos = list(dict.fromkeys(lista_grupos_terapeuticos))
 
@@ -80,19 +55,16 @@ def generate_chart(slider_ano):
         values.append(0)
         parents.append('Nacional')
 
-    for each in lista_ars:
         for cada in lista_grupos_terapeuticos:
             labels.append(cada)
-
             gasto_ars_grupo = dados_por_ars.loc[dados_por_ars['grupo_terapeutico']==cada]['soma_encargos_sns_ambulatorio']
             values.append(gasto_ars_grupo.to_string(index=False))
             #values.append(float(gasto_ars_grupo.to_string(index=False)))
             #values.append(4000000.0)
+            parents.append(each)
 
-            parents.append(each)'''
-
-   fig = go.Figure(go.Treemap(
-        names = labels,
+    fig = go.Figure(go.Treemap(
+        labels = labels,
         values = values,
         parents = parents,
         marker_colorscale = 'Blues'
