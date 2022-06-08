@@ -35,7 +35,7 @@ app.layout = html.Div([
 
 def generate_chart(slider_ano):
 
-    treemap_selection = df_treemap.loc[df_treemap['ano'] == slider_ano]
+    ''' treemap_selection = df_treemap.loc[df_treemap['ano'] == slider_ano]
     treemap_selection_sorted = treemap_selection.sort_values(by='soma_encargos_sns_ambulatorio', ascending=False)
     lista_grupos_terapeuticos = treemap_selection_sorted['grupo_terapeutico'].tolist()
     lista_grupos_terapeuticos = list(dict.fromkeys(lista_grupos_terapeuticos))
@@ -61,7 +61,11 @@ def generate_chart(slider_ano):
             values.append(gasto_ars_grupo.to_string(index=False))
             #values.append(float(gasto_ars_grupo.to_string(index=False)))
             #values.append(4000000.0)
-            parents.append(each)
+            parents.append(each)'''
+
+    values = [0, 11, 12, 13, 14, 15, 20, 30, 2, 5, 4, 12, 23]
+    labels = ["container", "A1", "A2", "A3", "A4", "A5", "B1", "B2", 'A6', 'aw', 'wefdcs', '234rtfe', '234']
+    parents = ["", "container", "A1", "A2", "A3", "A4", "container", "B1", 'A1', "B1", 'A1', "container", 'B1']
 
     fig = go.Figure(go.Treemap(
         labels = labels,
