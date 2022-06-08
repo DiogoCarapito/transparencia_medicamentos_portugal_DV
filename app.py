@@ -13,6 +13,9 @@ df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 path = ''
 df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
+path = 'databases/'
+df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
+
 radio_options_fumadores = [
     {'label': 'Todos', 'value': 'todos'},
     {'label': 'Não Fumadores', 'value': 'n_fumadores'},
@@ -35,6 +38,16 @@ dropdown_ars_barchart_2 = [
     {'label': '2020', 'value': 2020},
     {'label': '2021', 'value': 2021},
 ]
+
+treemap_checklist = dcc.Checklist(
+                    id='treemap_checklist',
+                    optios=[{'label': 'Nacional', 'value': 'nacional'},
+                            {'label': 'Norte', 'value': 'norte'},
+                            {'label': 'Centro', 'value': 'centro'},
+                            {'label': 'LVT', 'value': 'lvt'},
+                            {'label': 'Alentejo', 'value': 'alentejo'},
+                            {'label': 'Algarve', 'value': 'algarve'}],
+                    value='nacional')
 
 app = Dash(__name__)
 
@@ -119,11 +132,25 @@ app.layout = html.Div([
         html.Br(),
         html.Div([
             html.Div([
-                dcc.Graph(id='line_chart_1'),
-            ]),
+                treemap_checklist
+            ], className='col2', style={'width':'19%','float':'left'}),
+            html.Div([
+                dcc.Graph(id='treemap'),
+            ], className='col2', style={'width':'80%','float':'right'}),
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
+    html.Div([
+        html.Div([
+            html.H3('Treemap')
+        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        html.Br(),
+        html.Div([
+            html.Div([
+                dcc.Graph(id='treemap'),
+            ]),
+        ],className='row', style={'display': 'flex'}),
+    ], className='row container', style={'display': 'block'}),
 ])
 
 @app.callback(
@@ -131,6 +158,8 @@ app.layout = html.Div([
     Output("bar_chart_1", "figure"),
     Output("bar_chart_2", "figure"),
     Output("line_chart_1", "figure"),
+    Output("treemap", "figure"),
+    Input("treemap_checklist", "figure"),
     Input("radio_filtro_fumadores", "value"),
     Input("dropdown_ars_barchart_1", "value"),
     Input("dropdown_ars_barchart_2", "value")
