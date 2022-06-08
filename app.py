@@ -90,7 +90,7 @@ app.layout = html.Div([
             ], className='col2 ', style={'text-align': 'left','width':'19%','float': 'left'}),
             html.Div([
 
-                dcc.Graph(id='barchart_gasto_medicamentos_1'),
+                dcc.Graph(id='line_chart_1'),
 
             ], className='col2', style={'width':'40%','float':'center'}),
             html.Div([
@@ -112,7 +112,7 @@ app.layout = html.Div([
         html.Br(),
         html.Div([
 
-            dcc.Graph(id='line_chart_1'),
+            dcc.Graph(id='barchart_gasto_medicamentos_1'),
 
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
@@ -177,9 +177,10 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
                         )
     bar_chart_2 = go.Figure(data=[go.Bar(x=gasto_medicamentos['ano'], y=gasto_medicamentos['encargos_sns_ambulatorio'])],
                             layout=layout_bar_2,
+                            layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
                             )
     bar_chart_2.update_layout(barmode="relative")
-    # layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
+    #layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
 
     # line_chart_1
     ## https://plotly.com/python/line-charts/
