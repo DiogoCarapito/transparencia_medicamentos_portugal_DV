@@ -165,7 +165,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
 
     for regiao in lista_de_regioes:
 
-        gastos_por_regiao = gasto_medicamentos_nacional_por_ano.loc[gasto_medicamentos_nacional_por_ano['regiao'] == regiao]
+        gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
 
         line_chart_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
                                           y=gastos_por_regiao['total'],
@@ -211,8 +211,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
                         paper_bgcolor='#FFFFFF'
                         )
     bar_chart_2 = go.Figure(data=[go.Bar(x=gasto_medicamentos['ano'], y=gasto_medicamentos['encargos_sns_ambulatorio'])],
-                            layout=layout_bar_2,
-                            layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
+                            layout=layout_bar_2
                             )
     bar_chart_2.update_layout(barmode="relative")
     #layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
