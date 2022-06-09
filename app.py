@@ -213,18 +213,20 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         data_base = data_base.loc[data_base['regiao'] == dropdown_dispensa_medicamentos_regiao_2]
 
     layout_bar_1 = dict(title=dict(text='Gastros por categoria entre 2017 e 2021'),
-                      yaxis=dict(title='Gastos em milhões de €'),
+                      yaxis=dict(title='% de Gastos por categoria'),
                       xaxis=dict(title='Ano'),
                       paper_bgcolor='#FFFFFF'
                       )
 
-
+    y_encargos_sns_hospitalar = (((data_base['encargos_sns_hospitalar'] / data_base['total']).round(decimals = 3)*100).tolist())
+    y_encargos_sns_ambulatorio = (((data_base['encargos_sns_ambulatorio'] / data_base['total']).round(decimals = 3)*100).tolist())
+    y_encargos_utentes_ambulatorio = (((data_base['encargos_utentes_ambulatorio'] / data_base['total']).round(decimals = 3)*100).tolist())
 
     stacked_bar_chart_medicamentos_2 = go.Figure(
         data=[
-            go.Bar(name='encargos_sns_hospitalar', x=data_base['ano'].tolist(), y=(data_base['encargos_sns_hospitalar'] / data_base['total']).tolist()),
-            go.Bar(name='encargos_sns_ambulatorio', x=data_base['ano'].tolist(), y=(data_base['encargos_sns_ambulatorio'] / data_base['total']).tolist()),
-            go.Bar(name='encargos_utentes_ambulatorio', x=data_base['ano'].tolist(), y=(data_base['encargos_utentes_ambulatorio'] / data_base['total']).tolist())
+            go.Bar(name='encargos_sns_hospitalar', x=data_base['ano'].tolist(), y=y_encargos_sns_hospitalar),
+            go.Bar(name='encargos_sns_ambulatorio', x=data_base['ano'].tolist(), y=y_encargos_sns_ambulatorio),
+            go.Bar(name='encargos_utentes_ambulatorio', x=data_base['ano'].tolist(), y=y_encargos_utentes_ambulatorio),
         ],layout=layout_bar_1,)
 
     stacked_bar_chart_medicamentos_2.update_layout(barmode='stack')
