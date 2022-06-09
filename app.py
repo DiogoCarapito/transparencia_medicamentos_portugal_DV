@@ -16,8 +16,18 @@ path = ''
 df_bar_chart = pd.DataFrame(data=pd.read_csv(path + 'bar_chart_dummy.csv'))
 
 
+#Total = Hospitalar + Ambulatório PVP
+#Ambulatório PVP = Ambulatório Encargo Utentes + Ambulatório Comparticipalção SNS
 
-dropdown_ars_gasto_medicamentos_1 = [
+dropdown_dispensa_medicamentos_tipo_1 = [
+    {'label': 'Total', 'value': 'total'},
+    {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
+    {'label': 'Ambulatório PVP', 'value': 'valor_pvp_ambulatorio'},
+    {'label': 'Ambulatório Comparticipalção SNS', 'value': 'encargos_sns_ambulatorio'},
+    {'label': 'Ambulatório Encargo Utentes', 'value': 'encargos_utentes_ambulatorio'},
+]
+
+dropdown_dispensa_medicamentos_regiao_2 = [
     {'label': 'Nacional', 'value': 'nacional'},
     {'label': 'Norte', 'value': 'norte'},
     {'label': 'Centro', 'value': 'centro'},
@@ -29,14 +39,12 @@ dropdown_ars_gasto_medicamentos_1 = [
 #Total = Hospitalar + Ambulatório PVP
 #Ambulatório PVP = Ambulatório Encargo Utentes + Ambulatório Comparticipalção SNS
 
-dropdown_ars_gasto_medicamentos_2 = [
+dropdown_dispensa_medicamentos_tipo_1 = [
     {'label': 'Total', 'value': 'total'},
     {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
     {'label': 'Ambulatório PVP', 'value': 'valor_pvp_ambulatorio'},
     {'label': 'Ambulatório Comparticipalção SNS', 'value': 'encargos_sns_ambulatorio'},
     {'label': 'Ambulatório Encargo Utentes', 'value': 'encargos_utentes_ambulatorio'},
-    {'label': 'Ambulatório Comparticipalção SNS - Genéricos', 'value': 'encargos_sns_genericos'},
-
 ]
 
 app = Dash(__name__)
@@ -77,33 +85,45 @@ app.layout = html.Div([
         html.Br(),
         html.Div([
             html.Div([
-                html.H3('Filtros:'),
 
-                dcc.Dropdown(
-                    id='dropdown_ars_gasto_medicamentos_1',
-                    options=dropdown_ars_gasto_medicamentos_1,
-                    value='nacional'
-                ),
+                html.Div([
+                    dcc.Dropdown(
+                        id='dropdown_dispensa_medicamentos_tipo_1',
+                        options=dropdown_dispensa_medicamentos_tipo_1,
+                        value='total',
+                        searchable=False,
+                        clearable=False
+                    )
+                ],className='row', style={'display': 'flex','text-align': 'center'}),
 
                 html.Br(),
 
-                dcc.Dropdown(
-                    id='dropdown_ars_gasto_medicamentos_2',
-                    options=dropdown_ars_gasto_medicamentos_2,
-                    value='total'
-                )
+                html.Div([
+                    dcc.Graph(id='barchart_gasto_medicamentos_2')
+                ], className='row', style={'display': 'flex'}),
 
-            ], className='col2 ', style={'text-align': 'left','width':'19%','float': 'left'}),
+
+
+            ], className='col2', style={'width':'49%','float':'left'}),
             html.Div([
 
-                dcc.Graph(id='line_chart_1'),
+                html.Div([
+                    dcc.Dropdown(
+                        id='dropdown_dispensa_medicamentos_regiao_2',
+                        options=dropdown_dispensa_medicamentos_regiao_2,
+                        value='nacional',
+                        searchable=False,
+                        clearable=False
+                    ),
+                ],className='row', style={'display': 'flex','text-align': 'center'}),
 
-            ], className='col2', style={'width':'40%','float':'center'}),
-            html.Div([
+                html.Br(),
 
-                dcc.Graph(id='barchart_gasto_medicamentos_2'),
+                html.Div([
+                    dcc.Graph(id='line_chart_dispensa_medicamentos_1'),
+                ],className='row', style={'display': 'flex'}),
 
-            ], className='col2', style={'width':'40%','float':'right'}),
+            ], className='col2', style={'width':'49%','float':'right'}),
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
@@ -141,39 +161,44 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-    Output("line_chart_1", "figure"),
+    Output("line_chart_dispensa_medicamentos_1", "figure"),
     Output("barchart_gasto_medicamentos_1", "figure"),
     Output("barchart_gasto_medicamentos_2", "figure"),
-    Input("dropdown_ars_gasto_medicamentos_1", "value"),
-    Input("dropdown_ars_gasto_medicamentos_2", "value")
+    Input("dropdown_dispensa_medicamentos_regiao_2", "value"),
+    Input("dropdown_dispensa_medicamentos_tipo_1", "value")
 )
 
 def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
     
-    # line_chart_1
+    # line_chart_dispensa_medicamentos_1
 
     gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano', ascending=True)
     gasto_medicamentos_regiao_por_ano = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
-    lista_de_regioes = gasto_medicamentos_regiao_por_ano['regiao'].tolist()
+
+    gasto_medicamentos_regiao_por_ano_ordenado = gasto_medicamentos_regiao_por_ano.sort_values(by='total', ascending=False)
+    lista_de_regioes = gasto_medicamentos_regiao_por_ano_ordenado['regiao'].tolist()
     lista_de_regioes = list(dict.fromkeys(lista_de_regioes))
 
-    line_chart_1 = go.Figure()
-    line_chart_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
-                                      y=gasto_medicamentos_nacional_por_ano['total'],
-                                      mode='lines+markers',
-                                      name='Total'))
+    gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
+    gasto_medicamentos_regiao_por_ano['ano'] = gasto_medicamentos_regiao_por_ano['ano'].apply(str)
 
-    '''for regiao in lista_de_regioes:
+    line_chart_dispensa_medicamentos_1 = go.Figure()
+    line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
+                                      y=gasto_medicamentos_nacional_por_ano[dropdown_ars_barchart_2],
+                                      mode='lines+markers',
+                                      name='Nacional'))
+
+    for regiao in lista_de_regioes:
 
         gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
 
-        line_chart_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
-                                          y=gastos_por_regiao['total'],
+        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
+                                          y=gastos_por_regiao[dropdown_ars_barchart_2],
                                           mode='lines+markers',
                                           name=regiao
-                                          ))'''
+                                          ))
 
-    line_chart_1.update_layout(title='Evolução dos gastos em medicamentos entre 2017 e 2021',
+    line_chart_dispensa_medicamentos_1.update_layout(title='Evolução dos gastos em medicamentos entre 2017 e 2021',
                                xaxis_title='Anos',
                                yaxis_title='Gastos em milhões de €',
                                paper_bgcolor='#FFFFFF')
@@ -223,7 +248,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
 
     return bar_chart_1, \
            bar_chart_2, \
-           line_chart_1,
+           line_chart_dispensa_medicamentos_1,
 
 
 ## linha necessária par execuar a app
