@@ -159,23 +159,21 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
 
     line_chart_1 = go.Figure()
     line_chart_1.add_trace(go.Scatter(x=gasto_medicamentos_regiao_por_ano['ano'],
-                                      y=gasto_medicamentos_regiao_por_ano['encargos_sns_ambulatorio'],
+                                      y=gasto_medicamentos_regiao_por_ano['total'],
                                       mode='lines+markers',
-                                      name=regiao,
-                                      line_shape='spline'))
+                                      name='Total'))
 
     for regiao in lista_de_regioes:
-        ## codigo para filtrar (*.loc[*] == *)por ARS ao longo da lista de ars e alicação a uma linha no linechart
-        gastos_por_regiao = gasto_medicamentos_ambulatorio.loc[gasto_medicamentos_ambulatorio['regiao'] == regiao]
 
-        ## parte que adiciona cada uma das linhas
+        gastos_por_regiao = gasto_medicamentos_nacional_por_ano.loc[gasto_medicamentos_nacional_por_ano['regiao'] == regiao]
+
         line_chart_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
-                                          y=gastos_por_regiao['encargos_sns_ambulatorio'],
+                                          y=gastos_por_regiao['total'],
                                           mode='lines+markers',
-                                          name=regiao,
-                                          line_shape='spline'))
+                                          name=regiao
+                                          ))
 
-    line_chart_1.update_layout(title='Evolução dos gastos entre 2017 e 2021',
+    line_chart_1.update_layout(title='Evolução dos gastos em medicamentos entre 2017 e 2021',
                                xaxis_title='Anos',
                                yaxis_title='Gastos em milhões de €',
                                paper_bgcolor='#FFFFFF')
