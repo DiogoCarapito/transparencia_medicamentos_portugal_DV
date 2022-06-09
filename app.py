@@ -6,7 +6,7 @@ path = 'databases/'
 df_despesa_com_medicamentos_no_sns_por_ano_por_regiao = pd.DataFrame(data=pd.read_csv(path + 'despesa_com_medicamentos_no_sns_por_ano_por_regiao.csv'))
 
 path = 'databases/'
-df_despesa_com_medicamentos_no_sns_por_ano = pd.DataFrame(data=pd.read_csv(path + 'despesa-com-medicamentos-no-sns-por-ano.csv'))
+df_despesa_com_medicamentos_no_sns_por_ano = pd.DataFrame(data=pd.read_csv(path + 'despesa_com_medicamentos_no_sns_por_ano.csv'))
 
 
 
@@ -158,12 +158,12 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
     lista_de_regioes = list(dict.fromkeys(lista_de_regioes))
 
     line_chart_1 = go.Figure()
-    line_chart_1.add_trace(go.Scatter(x=gasto_medicamentos_regiao_por_ano['ano'],
-                                      y=gasto_medicamentos_regiao_por_ano['total'],
+    line_chart_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
+                                      y=gasto_medicamentos_nacional_por_ano['total'],
                                       mode='lines+markers',
                                       name='Total'))
 
-    for regiao in lista_de_regioes:
+    '''for regiao in lista_de_regioes:
 
         gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
 
@@ -171,7 +171,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
                                           y=gastos_por_regiao['total'],
                                           mode='lines+markers',
                                           name=regiao
-                                          ))
+                                          ))'''
 
     line_chart_1.update_layout(title='Evolução dos gastos em medicamentos entre 2017 e 2021',
                                xaxis_title='Anos',
