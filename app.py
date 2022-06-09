@@ -28,12 +28,12 @@ dropdown_dispensa_medicamentos_tipo_1 = [
 ]
 
 dropdown_dispensa_medicamentos_regiao_2 = [
-    {'label': 'Nacional', 'value': 'nacional'},
-    {'label': 'Norte', 'value': 'norte'},
-    {'label': 'Centro', 'value': 'centro'},
-    {'label': 'LVT', 'value': 'lvt'},
-    {'label': 'Alentejo', 'value': 'alentejo'},
-    {'label': 'Algarve', 'value': 'algarve'},
+    {'label': 'Nacional', 'value': 'Nacional'},
+    {'label': 'Norte', 'value': 'Norte'},
+    {'label': 'Centro', 'value': 'Centro'},
+    {'label': 'LVT', 'value': 'LVT'},
+    {'label': 'Alentejo', 'value': 'Alentejo'},
+    {'label': 'Algarve', 'value': 'Algarve'},
 ]
 
 #Total = Hospitalar + Ambulatório PVP
@@ -99,7 +99,7 @@ app.layout = html.Div([
                 html.Br(),
 
                 html.Div([
-                    dcc.Graph(id='barchart_gasto_medicamentos_2')
+                    dcc.Graph(id='line_chart_dispensa_medicamentos_1')
                 ], className='row', style={'display': 'flex'}),
 
 
@@ -111,7 +111,7 @@ app.layout = html.Div([
                     dcc.Dropdown(
                         id='dropdown_dispensa_medicamentos_regiao_2',
                         options=dropdown_dispensa_medicamentos_regiao_2,
-                        value='nacional',
+                        value='Nacional',
                         searchable=False,
                         clearable=False
                     ),
@@ -120,7 +120,7 @@ app.layout = html.Div([
                 html.Br(),
 
                 html.Div([
-                    dcc.Graph(id='line_chart_dispensa_medicamentos_1'),
+                    dcc.Graph(id='stacked_bar_chart_medicamentos_2'),
                 ],className='row', style={'display': 'flex'}),
 
             ], className='col2', style={'width':'49%','float':'right'}),
@@ -137,8 +137,6 @@ app.layout = html.Div([
         ], className='row', style={'display': 'flex','text-align': 'center'}),
         html.Br(),
         html.Div([
-
-            dcc.Graph(id='barchart_gasto_medicamentos_1'),
 
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
@@ -162,13 +160,13 @@ app.layout = html.Div([
 
 @app.callback(
     Output("line_chart_dispensa_medicamentos_1", "figure"),
-    Output("barchart_gasto_medicamentos_1", "figure"),
-    Output("barchart_gasto_medicamentos_2", "figure"),
+    Output("stacked_bar_chart_medicamentos_2", "figure"),
+    Input("dropdown_dispensa_medicamentos_tipo_1", "value"),
     Input("dropdown_dispensa_medicamentos_regiao_2", "value"),
-    Input("dropdown_dispensa_medicamentos_tipo_1", "value")
+
 )
 
-def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
+def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,):
     
     # line_chart_dispensa_medicamentos_1
 
@@ -184,7 +182,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
 
     line_chart_dispensa_medicamentos_1 = go.Figure()
     line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
-                                      y=gasto_medicamentos_nacional_por_ano[dropdown_ars_barchart_2],
+                                      y=gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1],
                                       mode='lines+markers',
                                       name='Nacional'))
 
@@ -193,7 +191,7 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
         gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
 
         line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
-                                          y=gastos_por_regiao[dropdown_ars_barchart_2],
+                                          y=gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1],
                                           mode='lines+markers',
                                           name=regiao
                                           ))
@@ -204,51 +202,38 @@ def generate_chart(dropdown_ars_barchart_1,dropdown_ars_barchart_2,):
                                paper_bgcolor='#FFFFFF')
 
 
-    # barchart_1
+    # stacked_bar_chart_medicamentos_2
     ## filtro aplicado com a função .loc[] com logica para ter apenas dados da ars selecionada no dropdown menu correspondente
-    if dropdown_ars_barchart_1 == 'nacional':
-        gasto_medicamentos = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.loc[df_despesa_com_medicamentos_no_sns_por_ano_por_regiao['regiao'] == dropdown_ars_barchart_1]
+
+
+    if dropdown_dispensa_medicamentos_regiao_2 == 'Nacional':
+        data_base = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano', ascending=True)
     else:
-        gasto_medicamentos = df_despesa_com_medicamentos_no_sns_por_ano
+        data_base = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
+        data_base = data_base.loc[data_base['regiao'] == dropdown_dispensa_medicamentos_regiao_2]
 
-
-    layout_bar_1 = dict(title=dict(text='Gastros entre 2017 e 2021'),
+    layout_bar_1 = dict(title=dict(text='Gastros por categoria entre 2017 e 2021'),
                       yaxis=dict(title='Gastos em milhões de €'),
                       xaxis=dict(title='Ano'),
-                      paper_bgcolor='#f9f9f9'
+                      paper_bgcolor='#FFFFFF'
                       )
-    bar_chart_1 = go.Figure(data=[go.Bar(x=gasto_medicamentos['ano'], y=gasto_medicamentos['encargos_sns_ambulatorio'])],
-                            layout=layout_bar_1,
-                            )
-    bar_chart_1.update_layout(barmode="relative")
+
+
+
+    stacked_bar_chart_medicamentos_2 = go.Figure(
+        data=[
+            go.Bar(name='encargos_sns_hospitalar', x=data_base['ano'].tolist(), y=(data_base['encargos_sns_hospitalar'] / data_base['total']).tolist()),
+            go.Bar(name='encargos_sns_ambulatorio', x=data_base['ano'].tolist(), y=(data_base['encargos_sns_ambulatorio'] / data_base['total']).tolist()),
+            go.Bar(name='encargos_utentes_ambulatorio', x=data_base['ano'].tolist(), y=(data_base['encargos_utentes_ambulatorio'] / data_base['total']).tolist())
+        ],layout=layout_bar_1,)
+
+    stacked_bar_chart_medicamentos_2.update_layout(barmode='stack')
+
     # layout_yaxis_range=[0,max(gasto_medicamentos['encargos_sns_ambulatorio'])]
 
-    # barchart_2
-    ## filtro aplicado com a função .loc[] com logica para ter apenas dados do ano selecionado no dropdown menu correspondente
-    if dropdown_ars_barchart_1 == 'nacional':
-        gasto_medicamentos = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.loc[df_despesa_com_medicamentos_no_sns_por_ano_por_regiao['regiao'] == dropdown_ars_barchart_1]
-    else:
-        gasto_medicamentos = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao
 
-    layout_bar_2 = dict(title=dict(text='evolução em percentagem'),
-                        yaxis=dict(title='Gastos em milhões de €'),
-                        xaxis=dict(title='Ano'),
-                        paper_bgcolor='#FFFFFF'
-                        )
-    bar_chart_2 = go.Figure(data=[go.Bar(x=gasto_medicamentos['ano'], y=gasto_medicamentos['encargos_sns_ambulatorio'])],
-                            layout=layout_bar_2
-                            )
-    bar_chart_2.update_layout(barmode="relative")
-    #layout_yaxis_range=[0, max(gasto_medicamentos['encargos_sns_ambulatorio'])]
+    return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2
 
-    
-
-
-    ## Execução dos diferentes gráficos
-
-    return bar_chart_1, \
-           bar_chart_2, \
-           line_chart_dispensa_medicamentos_1,
 
 
 ## linha necessária par execuar a app
