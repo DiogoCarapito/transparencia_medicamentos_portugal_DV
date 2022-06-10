@@ -258,9 +258,9 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     grupo_farmaceutico_por_ano_por_regiao = df_despesa_por_grupo_farmaceutico_por_ano_por_regiao.loc[df_despesa_por_grupo_farmaceutico_por_ano_por_regiao['ano'] == 2020]
 
-    grupo_farmaceutico_por_ano_por_regiao_ordenado = grupo_farmaceutico_por_ano_por_regiao.sort_values(by='encargos_sns_ambulatorio',ascending=True)
+    '''grupo_farmaceutico_por_ano_por_regiao_ordenado = grupo_farmaceutico_por_ano_por_regiao.sort_values(by='encargos_sns_ambulatorio',ascending=True)
     lista_de_grupo_terapeutico = grupo_farmaceutico_por_ano_por_regiao_ordenado['grupo_terapeutico'].tolist()
-    lista_de_grupo_terapeutico = list(dict.fromkeys(lista_de_grupo_terapeutico))
+    lista_de_grupo_terapeutico = list(dict.fromkeys(lista_de_grupo_terapeutico))'''
 
     sunburst_regiao_grupo_farmaceutico_3=px.treemap(grupo_farmaceutico_por_ano_por_regiao,path=['regiao','grupo_terapeutico'], values='encargos_sns_ambulatorio')
 
@@ -293,10 +293,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     # See https://plotly.com/python/creating-and-updating-figures/
     '''
     sunburst_regiao_grupo_farmaceutico_3.update_layout(margin=dict(t=0, l=0, r=0, b=0))
-
-
-
-
 
 
     return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2,sunburst_regiao_grupo_farmaceutico_3
