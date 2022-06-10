@@ -49,9 +49,9 @@ radio_percentage_absoluto_2 = [
     {'label': 'Absoluto', 'value': 'absoluto'}
 ]
 
-radio_nacional_1 = [
-    {'label': 'Ocultar Nacional', 'value': 'ocultar'},
-    {'label': 'Mostrar Nacional', 'value': 'mostrar'}
+
+mostrar_nacional_checklist_1 = [
+    'Mostrar Nacional'
 ]
 
 app = Dash(__name__)
@@ -60,18 +60,19 @@ app = Dash(__name__)
 app.layout = html.Div([
     html.Div([
         html.Div([
+            html.Div([
+
+                html.Img(src=app.get_asset_url('logo.png'), style={'width': '60px', 'position': 'left'})
+            ], id='logo')
+
+        ], style={'width': '25%'}),
+        html.Div([
 
             html.H2('Medicamentos - Portal da Transparência')
 
-            ],style={'width':'79%','position': 'center'}
+            ],style={'width':'79%','position': 'right'}
         ),
-        html.Div([
-            html.Div([
 
-                html.Img(src=app.get_asset_url('logo.png'),style={'width': '60px', 'position': 'center'})
-            ], id='logo')
-
-        ],style={'width':'25%'}),
     ],className='row container', style={'display': 'flex'}),
 
     html.Div([
@@ -92,24 +93,25 @@ app.layout = html.Div([
         html.Br(),
         html.Div([
             html.Div([
-
                 html.Div([
-                    dcc.Dropdown(
-                        id='dropdown_dispensa_medicamentos_tipo_1',
-                        options=dropdown_dispensa_medicamentos_tipo_1,
-                        value='total',
-                        searchable=False,
-                        clearable=False
-                    ),
-                    html.Br(),
-                    dcc.RadioItems(
-                        id='radio_nacional_1',
-                        options=radio_nacional_1,
-                        value='ocultar'
-                    ),
+                    html.Div([
+                        dcc.Dropdown(
+                            id='dropdown_dispensa_medicamentos_tipo_1',
+                            options=dropdown_dispensa_medicamentos_tipo_1,
+                            value='total',
+                            searchable=False,
+                            clearable=False
+                        ),
 
-                ],className='row', style={'text-align': 'center', 'width': '75%'}),
+                        html.Br(),
 
+                        dcc.Checklist(
+                            mostrar_nacional_checklist_1,
+                            id = 'mostrar_nacional_checklist_1'
+                        )
+
+                    ],className='row filter_container', style={'text-align': 'center', 'width': '75%'}),
+                ],style={'text-align':'center'}),
                 html.Br(),
 
                 html.Div([
@@ -135,7 +137,7 @@ app.layout = html.Div([
                         value='percentagem'
                     ),
 
-                ],className='row', style={'text-align': 'center', 'width': '75%'}),
+                ],className='row filter_container', style={'text-align': 'center', 'width': '75%'}),
 
                 html.Br(),
 
@@ -190,18 +192,19 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-    Output("line_chart_dispensa_medicamentos_1", "figure"),
-    Output("stacked_bar_chart_medicamentos_2", "figure"),
-    Output("sunburst_regiao_grupo_farmaceutico_3", "figure"),
-    Input("dropdown_dispensa_medicamentos_tipo_1", "value"),
-    Input("dropdown_dispensa_medicamentos_regiao_2", "value"),
-    Input("radio_percentage_absoluto_2", "value"),
-    Input("slider_ano_3", "value"),
-    Input("radio_nacional_1", "value"),
+    Output('line_chart_dispensa_medicamentos_1', 'figure'),
+    Output('stacked_bar_chart_medicamentos_2', 'figure'),
+    Output('sunburst_regiao_grupo_farmaceutico_3', 'figure'),
+    Input('dropdown_dispensa_medicamentos_tipo_1', 'value'),
+    Input('dropdown_dispensa_medicamentos_regiao_2', 'value'),
+    Input('radio_percentage_absoluto_2', 'value'),
+    Input('slider_ano_3', 'value'),
+    Input('mostrar_nacional_checklist_1', 'value'),
+
 
 )
 
-def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3, radio_nacional_1):
+def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3,mostrar_nacional_checklist_1):
     
     # line_chart_dispensa_medicamentos_1
 
@@ -215,7 +218,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     line_chart_dispensa_medicamentos_1 = go.Figure()
 
-    if radio_nacional_1 == 'mostrar':
+    if mostrar_nacional_checklist_1 == ['Mostrar Nacional']:
         gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano',ascending=True)
         gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
         line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
@@ -297,8 +300,8 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
             p.append(regi)
             v.append(10)
 
-    l = ["Nacinal", "Norte", "Centro", "Enos", "Noam", "Alentejo", "LVT", "Enoch", "Algarve","cenas"]
-    p = ["", "Nacinal", "Nacinal", "Centro", "Centro", "Nacinal", "Nacinal", "LVT", "Nacinal","Norte"]
+    l = ['Nacinal', 'Norte', 'Centro', 'Enos', 'Noam', 'Alentejo', 'LVT', 'Enoch', 'Algarve','cenas']
+    p = ['', 'Nacinal', 'Nacinal', 'Centro', 'Centro', 'Nacinal', 'Nacinal', 'LVT', 'Nacinal','Norte']
     v = [0, 0, 0, 10, 2, 0, 0, 4, 0,3]
     
     sunburst_regiao_grupo_farmaceutico_3 = go.Figure(go.Sunburst(
