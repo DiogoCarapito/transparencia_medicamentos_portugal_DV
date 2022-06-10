@@ -110,7 +110,7 @@ app.layout = html.Div([
                             id = 'mostrar_nacional_checklist_1'
                         )
 
-                    ],className='row filter_container', style={'text-align': 'center', 'width': '75%'}),
+                    ],className='row filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '75%'}),
                 ],style={'text-align':'center'}),
                 html.Br(),
 

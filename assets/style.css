@@ -47,6 +47,7 @@ body {
     padding:6px;
     float: center;
     display: block;
+    justify-content: center;
 }
 
 .col1 {
@@ -54,6 +55,7 @@ body {
     padding:6px;
     float: center;
     display: block;
+    justify-content: center;
 }
 
 .col2 {
@@ -63,6 +65,7 @@ body {
     float: center;
     padding:6px;
     display:block;
+    justify-content: center;
 }
 
 .col2:last-child {margin-right:0;  }
@@ -75,6 +78,7 @@ body {
     float: center;
     padding:6px;
     display: block;
+    justify-content: center;
 }
 
 .col3:last-child {margin-right:0;  }
