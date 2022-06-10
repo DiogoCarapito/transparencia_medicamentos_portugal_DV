@@ -14,7 +14,7 @@ df_despesa_por_grupo_farmaceutico_por_ano_por_regiao = pd.DataFrame(data=pd.read
 
 
 dropdown_dispensa_medicamentos_tipo_1 = [
-    {'label': 'Total (Hoslpitalar + Ambulatório)', 'value': 'total'},
+    {'label': 'Total (Hospitalar + Ambulatório)', 'value': 'total'},
     {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
     {'label': 'Ambulatório (SNS + Utentes)', 'value': 'valor_pvp_ambulatorio'},
     {'label': 'Ambulatório Encargo SNS', 'value': 'encargos_sns_ambulatorio'},
@@ -25,7 +25,7 @@ dropdown_dispensa_medicamentos_regiao_2 = [
     {'label': 'Nacional', 'value': 'Nacional'},
     {'label': 'Norte', 'value': 'Norte'},
     {'label': 'Centro', 'value': 'Centro'},
-    {'label': 'LVT', 'value': 'LVT'},
+    {'label': 'Lisboa e Vale do Tejo', 'value': 'Lisboa e Vale do Tejo'},
     {'label': 'Alentejo', 'value': 'Alentejo'},
     {'label': 'Algarve', 'value': 'Algarve'},
 ]
@@ -56,7 +56,7 @@ app.layout = html.Div([
         ], style={'width': '8%'}),
         html.Div([
 
-            html.H2('(1)Medicamentos - Portal da Transparência')
+            html.H1('Encargos com Medicamentos Comparticipados em Portugal')
 
             ],style={'width':'91%','position': 'right'}
         ),
@@ -65,10 +65,10 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-
-            html.H3('(2)Explicação sobre o trabalho de DV'),
-            html.Label('(3)Explicações nevessárias sobre vários motivos e razões relativa a situações variadas e essenciais para uma boa relação entre as difrentes consistências ')
-
+            html.H3('Dashboard - Encargos com Medicamentos Comparticipados em Portugal'),
+            html.Label('O portal da transparência do SNS publica variados dados de saúde.'),
+            html.Br(),
+            html.Label('Este Dasboard analiza dados de encargos com medicação no Serviço Nacional de Saúde por região do país, por ano e por grupo farmacoterapêutico.'),
         ], className='row'),
     ]),
 
@@ -76,11 +76,14 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Qual a evolução dos gastos totais com medicamentos no SNS?')
+            html.H3('Qual a evolução dos encargos totais com medicamentos no SNS?')
         ], className='row', style={'text-align': 'center'}),
         html.Div([
 
             html.Div([
+                html.Br(),
+                html.Br(),
+                html.Br(),
                 html.Br(),
                 html.Br(),
                 html.Div([
@@ -109,21 +112,10 @@ app.layout = html.Div([
                     ]),
                     html.Br(),
                 ],className='row filter_container'),
-                html.Br(),
-                html.Div([
-                    html.Label('(5)')
-                ], className='row'),
-
-            ], className='col2', style={'width': '35%', 'text-align': 'left'}),
-
+            ], className='col2', style={'width': '25%', 'text-align': 'left'}),
             html.Div([
-
                 dcc.Graph(id='line_chart_dispensa_medicamentos_1')
-
             ], className='col2', style={'width': '64%', 'text-align': 'center'}),
-
-
-
         ],className='row', style={'display': 'flex'}),
     ], className='row container', style={'display': 'block'}),
 
@@ -131,7 +123,7 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Qual a divisão entre gastos em ambulatório e em ambiente hospitalar?')
+            html.H3('Qual a divisão entre encargos em ambulatório e em ambiente hospitalar?')
         ], className='row', style={'text-align': 'center'}),
         html.Div([
             html.Div([
@@ -158,8 +150,11 @@ app.layout = html.Div([
                 ], className='filter_container'),
             ], className='col2',style={'width':'35%'}),
             html.Div([
-                html.Label('(7)'),
-            ], className='col2',style={'width': '64%'}),
+                html.Label('Comparação entre encargos com medicamentos Hospitalares versus Ambulatório, em percentagem ou valores absolutos, entre 2011 e 2021. Valores nacionais ou por região'),
+                html.Br(),
+                html.Label('Dentro dos medicamentos de Ambulatório, comparação dos encargos para o SNS e para o utente'),
+                html.Br(),
+            ], className='col2',style={'width': '64%', 'text-align': 'left'}),
 
 
         ], className='row', style={'display': 'flex'}),
@@ -186,7 +181,9 @@ app.layout = html.Div([
             html.H3('Qual a despesa de medicamentos por grupo farmacoterapêutico?')
 
         ], className='row', style={'text-align': 'center'}),
-        html.Label('(9)'),
+        html.Label('Evolução dos encargos em medicamentos por grupo farmacoterapêutico e por região.'),
+        html.Br(),
+        html.Label('Evolução entre 2011 e 2021'),
         html.Br(),
         html.Div([
             dcc.Graph(id='treemap_regiao_grupo_farmaceutico_4'),
@@ -207,7 +204,7 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Referencias')
+            html.H3('Referências')
         ], className='row', style={'display': 'flex','text-align': 'center'}),
 
         html.Div([
@@ -256,19 +253,19 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     line_chart_dispensa_medicamentos_1 = go.Figure()
 
     if normalizar_populacao_checklist_1 == ['Normalizar (por habitante)']:
-        populacao={'Nacional':10493410, 'Norte':3765539,'LVT':3869536,'Centro':1819360,'Alentejo':528126,'Algarve':510849}
-        y_axis='Gastos per capita em €'
+        populacao={'Nacional':10493410, 'Norte':3765539,'Lisboa e Vale do Tejo':3869536,'Centro':1819360,'Alentejo':528126,'Algarve':510849}
+        y_axis='Encargos per capita em €'
     else:
-        populacao={'Nacional': 1, 'Norte': 1, 'LVT': 1, 'Centro': 1, 'Alentejo': 1,'Algarve': 1}
-        y_axis='Gastos em milhões de €'
+        populacao={'Nacional': 1, 'Norte': 1, 'Lisboa e Vale do Tejo': 1, 'Centro': 1, 'Alentejo': 1,'Algarve': 1}
+        y_axis='Encargos em Euros'
 
-    cor = {'Nacional': 'rgba(23, 16, 90, 1)', 'Norte': 'rgba(128, 168, 214, 1)', 'LVT': '#C8C3F8', 'Centro': '#8AF0CE', 'Alentejo': 'rgba(234, 150, 126, 1)','Algarve': 'rgba(246, 210, 129, 1)'}
+    cor = {'Nacional': 'rgba(23, 16, 90, 1)', 'Norte': 'rgba(128, 168, 214, 1)', 'Lisboa e Vale do Tejo': '#C8C3F8', 'Centro': '#8AF0CE', 'Alentejo': 'rgba(234, 150, 126, 1)','Algarve': 'rgba(246, 210, 129, 1)'}
 
     for regiao in lista_de_regioes:
-        gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
+        Encargos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
         line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(
-            x=gastos_por_regiao['ano'],
-            y=(gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1]/populacao[regiao]).round(decimals = 0),
+            x=Encargos_por_regiao['ano'],
+            y=(Encargos_por_regiao[dropdown_dispensa_medicamentos_tipo_1]/populacao[regiao]).round(decimals = 0),
             mode='lines+markers',
             name=regiao,
             marker_color= cor[regiao]
@@ -286,7 +283,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         ))
 
     line_chart_dispensa_medicamentos_1.update_layout(
-        title='Evolução dos gastos em medicamentos entre 2017 e 2021 por Região',
+        title='Evolução dos Encargos em medicamentos entre 2011 e 2021 por Região',
         xaxis_title='Ano',
         yaxis_title=y_axis,
         paper_bgcolor='#FFFFFF',
@@ -306,13 +303,13 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     if radio_percentage_absoluto_2 == 'percentagem':
         y_encargos_sns_hospitalar = (((data_base['encargos_sns_hospitalar'] / data_base['total']).round(decimals = 3)*100).tolist())
         y_valor_pvp_ambulatorio = (((data_base['valor_pvp_ambulatorio'] / data_base['total']).round(decimals = 3)*100).tolist())
-        y_axis_title = '% de Gastos por categoria'
+        y_axis_title = '% de Encargos por categoria'
     else:
         y_encargos_sns_hospitalar = (data_base['encargos_sns_hospitalar'].tolist())
         y_valor_pvp_ambulatorio = (data_base['valor_pvp_ambulatorio'].tolist())
-        y_axis_title = 'M€ Gastos por categoria'
+        y_axis_title = 'Encargos por categoria em Euros'
 
-    layout_stacked_bar_chart_medicamentos_2 = dict(title=dict(text='Gastros por categoria entre 2017 e 2021'),
+    layout_stacked_bar_chart_medicamentos_2 = dict(title=dict(text='Encargos por categoria entre 2011 e 2021'),
                       yaxis=dict(title=y_axis_title),
                       xaxis=dict(title='Ano'),
                       paper_bgcolor='#FFFFFF',
@@ -323,13 +320,13 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     stacked_bar_chart_medicamentos_2 = go.Figure(
         data=[
             go.Bar(
-                name='Gastos SNS Hospitalar',
+                name='Encargos SNS Hospitalar',
                 x=data_base['ano'].tolist(),
                 y=y_encargos_sns_hospitalar,
                 marker_color = '#545F8D'
             ),
             go.Bar(
-                name='Gastos SNS Ambulatório',
+                name='Encargos SNS Ambulatório',
                 x=data_base['ano'].tolist(),
                 y=y_valor_pvp_ambulatorio,
                 marker_color = '#B8EAA9'
@@ -341,14 +338,14 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     if radio_percentage_absoluto_2 == 'percentagem':
         y_encargos_sns_ambulatorio = (((data_base['encargos_sns_ambulatorio'] / data_base['valor_pvp_ambulatorio']).round(decimals = 3)*100).tolist())
         y_encargos_utentes_ambulatorio = (((data_base['encargos_utentes_ambulatorio'] / data_base['valor_pvp_ambulatorio']).round(decimals = 3)*100).tolist())
-        y_axis_title_3 = '% de Gastos por categoria'
+        y_axis_title_3 = '% de Encargos por categoria'
     else:
         y_encargos_sns_ambulatorio = (data_base['encargos_sns_ambulatorio'].tolist())
         y_encargos_utentes_ambulatorio = (data_base['encargos_utentes_ambulatorio'].tolist())
-        y_axis_title_3 = 'M€ Gastos por categoria'
+        y_axis_title_3 = 'Encargos por categoria em Euros'
 
     layout_stacked_bar_chart_medicamentos_3 = dict(
-        title=dict(text='Gastros Ambulatório por categoria entre 2017 e 2021'),
+        title=dict(text='Encargos no Ambulatório por categoria entre 2011 e 2021'),
         yaxis=dict(title=y_axis_title_3),
         xaxis=dict(title='Ano'),
         paper_bgcolor='#FFFFFF',
@@ -381,22 +378,27 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     cor_treemap = ['rgba(23, 16, 90, 1)', 'rgba(128, 168, 214, 1)', 'rgba(129, 66, 132, 1)',  'rgba(143, 117, 103, 1)', 'rgba(234, 150, 126, 1)', 'rgba(246, 210, 129, 1)']
 
-    '''treemap_regiao_grupo_farmaceutico_4=px.treemap(
+    treemap_regiao_grupo_farmaceutico_4=px.treemap(
         grupo_farmaceutico_por_ano_por_regiao,
         path=['regiao','grupo_terapeutico'],
         values='encargos_sns_ambulatorio',
         color='encargos_sns_ambulatorio',
-        color_continuous_scale='viridis',
-        color_discrete_map={'(?)': 'lightgrey'},
+        #color_continuous_scale=["#1C3945", "#DAF3AB"],
+        #color_continuous_scale=["#335775","#D8ECEB"],
+        #color_continuous_scale=["#FAE0C6", "#DB574B"],
+        color_continuous_scale='emrld',
 
-    )'''
+    )
+    '''
     treemap_regiao_grupo_farmaceutico_4 = px.treemap(
         grupo_farmaceutico_por_ano_por_regiao,
         path=['regiao', 'grupo_terapeutico'],
         color='regiao',
         color_discrete_map=cor,
+        labels= 'regiao'+'encargos_sns_ambulatorio',
         values='encargos_sns_ambulatorio',
     )
+    '''
 
     treemap_regiao_grupo_farmaceutico_4.update_traces(root_color="lightgrey")
     treemap_regiao_grupo_farmaceutico_4.update_layout(margin=dict(t=10, l=10, r=10, b=10))
