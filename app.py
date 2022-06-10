@@ -245,6 +245,7 @@ app.layout = html.Div([
 def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3,mostrar_nacional_checklist_1,normalizar_populacao_checklist_1):
     
     # line_chart_dispensa_medicamentos_1
+
     gasto_medicamentos_regiao_por_ano = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
 
     gasto_medicamentos_regiao_por_ano_ordenado = gasto_medicamentos_regiao_por_ano.sort_values(by='total', ascending=False)
@@ -373,16 +374,11 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         ],layout=layout_stacked_bar_chart_medicamentos_3,)
 
     stacked_bar_chart_medicamentos_3.update_layout(barmode='stack')
-    .update_layout(
-        hoverlabel=dict(
-            font_size=14,
-        )
+
     # treemap
 
     slider_converter = {0:2011, 1:2012, 2:2013, 3:2014, 4:2015, 5:2016, 6:2017, 7:2018, 8:2019, 9:2020, 10:2021}
     grupo_farmaceutico_por_ano_por_regiao = df_despesa_por_grupo_farmaceutico_por_ano_por_regiao.loc[df_despesa_por_grupo_farmaceutico_por_ano_por_regiao['ano'] == slider_converter[slider_ano_3]]
-
-    cor_treemap = ['rgba(23, 16, 90, 1)', 'rgba(128, 168, 214, 1)', 'rgba(129, 66, 132, 1)',  'rgba(143, 117, 103, 1)', 'rgba(234, 150, 126, 1)', 'rgba(246, 210, 129, 1)']
 
     treemap_regiao_grupo_farmaceutico_4=px.treemap(
         grupo_farmaceutico_por_ano_por_regiao,
@@ -391,16 +387,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         color='encargos_sns_ambulatorio',
         color_continuous_scale='emrld',
     )
-    '''
-    treemap_regiao_grupo_farmaceutico_4 = px.treemap(
-        grupo_farmaceutico_por_ano_por_regiao,
-        path=['regiao', 'grupo_terapeutico'],
-        color='regiao',
-        color_discrete_map=cor,
-        labels= 'regiao'+'encargos_sns_ambulatorio',
-        values='encargos_sns_ambulatorio',
-    )
-    '''
 
     treemap_regiao_grupo_farmaceutico_4.update_traces(root_color="lightgrey")
     treemap_regiao_grupo_farmaceutico_4.update_layout(margin=dict(t=10, l=10, r=10, b=10))
