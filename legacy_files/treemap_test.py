@@ -3,7 +3,7 @@ from dash import Dash, dcc, html, Input, Output
 import plotly.graph_objects as go
 import plotly.express as px
 
-path = 'databases/'
+path = '../databases/'
 df_treemap = pd.DataFrame(data=pd.read_csv(path + 'dispensa-de-medicamentos-por-grupo-farmacoterapeutico-por-ano.csv'))
 
 '''path =''
