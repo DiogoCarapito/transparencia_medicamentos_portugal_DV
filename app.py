@@ -125,55 +125,57 @@ app.layout = html.Div([
 
 
         ],className='row', style={'display': 'flex'}),
+    ], className='row container', style={'display': 'block'}),
 
+    html.Br(),
+
+    html.Div([
+        html.Div([
+            html.H3('(6)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+        ], className='row', style={'text-align': 'center'}),
         html.Div([
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Div([
-                            html.Div([
-                                dcc.Dropdown(
-                                    id='dropdown_dispensa_medicamentos_regiao_2',
-                                    options=dropdown_dispensa_medicamentos_regiao_2,
-                                    value='Nacional',
-                                    searchable=False,
-                                    clearable=False
-                                ),
-                            ]),
-                            html.Br(),
-                            html.Div([
-                                html.Div([
-                                    dcc.RadioItems(
-                                        id='radio_percentage_absoluto_2',
-                                        options=radio_percentage_absoluto_2,
-                                        value='percentagem'
-                                    ),
-                                ]),
-                            ], style={'display': 'block'}),
-                        ], className='filter_container'),
-                    ], className='col2',style={'width':'35%'}),
+                        dcc.Dropdown(
+                            id='dropdown_dispensa_medicamentos_regiao_2',
+                            options=dropdown_dispensa_medicamentos_regiao_2,
+                            value='Nacional',
+                            searchable=False,
+                            clearable=False
+                        ),
+                    ]),
+                    html.Br(),
                     html.Div([
-                        html.Label('(7)'),
-                    ], className='col2',style={'width': '64%'}),
+                        html.Div([
+                            dcc.RadioItems(
+                                id='radio_percentage_absoluto_2',
+                                options=radio_percentage_absoluto_2,
+                                value='percentagem'
+                            ),
+                        ]),
+                    ], style={}),
+                ], className='filter_container'),
+            ], className='col2',style={'width':'35%'}),
+            html.Div([
+                html.Label('(7)'),
+            ], className='col2',style={'width': '64%'}),
 
-                ],className='row'),
 
-                html.Br(),
+        ], className='row', style={'display': 'flex'}),
+
+        html.Br(),
+
+        html.Div([
+            html.Div([
                 html.Div([
-
                     dcc.Graph(id='stacked_bar_chart_medicamentos_2'),
-
                 ], className='col2', style={'width':'45%','text-align': 'center'}),
-
                 html.Div([
-
                     dcc.Graph(id='stacked_bar_chart_medicamentos_3'),
-
                 ], className='col2', style={'width': '45%', 'text-align': 'center'}),
-
             ], className='', style={'width':'99%','float':'center', 'text-align': 'center'}),
         ],className='row', style={'display': 'flex'}),
-
     ], className='row container', style={'display': 'block'}),
 
     html.Br(),
@@ -205,15 +207,20 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-
-            html.H3('(10)considerações finais')
-
+            html.H3('Referencias')
         ], className='row', style={'display': 'flex','text-align': 'center'}),
-        html.Br(),
+
         html.Div([
-
             html.Label('(11)tesxto bonito com as referencias')
+        ], className='row', style={'display': 'flex','text-align': 'center'})
+    ], className='row container', style={'display': 'block'}),
 
+    html.Div([
+        html.Div([
+            html.H3('Autores')
+        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        html.Div([
+            html.Label('Catarina Bragança (20210950), Dioco Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)')
         ], className='row', style={'display': 'flex','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
 ])
