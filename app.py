@@ -72,7 +72,7 @@ app.layout = html.Div([
         ], style={'width': '25%'}),
         html.Div([
 
-            html.H2('Medicamentos - Portal da Transparência')
+            html.H2('(1)Medicamentos - Portal da Transparência')
 
             ],style={'width':'79%','position': 'right'}
         ),
@@ -82,8 +82,8 @@ app.layout = html.Div([
     html.Div([
         html.Div([
 
-            html.H3('Explicação sobre o trabalho de DV'),
-            html.Label('Explicações nevessárias sobre vários motivos e razões relativa a situações variadas e essenciais para uma boa relação entre as difrentes consistências ')
+            html.H3('(2)Explicação sobre o trabalho de DV'),
+            html.Label('(3)Explicações nevessárias sobre vários motivos e razões relativa a situações variadas e essenciais para uma boa relação entre as difrentes consistências ')
 
         ], className='row'),
     ]),
@@ -92,13 +92,15 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+            html.H3('(4)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
         ], className='row', style={'text-align': 'center'}),
         html.Br(),
         html.Div([
             html.Div([
                 html.Div([
+                    html.Label('(5)'),
                     html.Div([
+
                         html.Div([
                             dcc.Dropdown(
                                 id='dropdown_dispensa_medicamentos_tipo_1',
@@ -133,7 +135,7 @@ app.layout = html.Div([
 
             ], className='col2', style={'width':'49%','float':'center', 'text-align': 'center'}),
             html.Div([
-
+                html.Label('(7)'),
                 html.Div([
                     html.Div([
                         dcc.Dropdown(
@@ -170,9 +172,10 @@ app.layout = html.Div([
     html.Div([
         html.Div([
 
-            html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+            html.H3('(8)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
 
         ], className='row', style={'text-align': 'center'}),
+        html.Label('(9)'),
         html.Br(),
         html.Div([
             dcc.Graph(id='sunburst_regiao_grupo_farmaceutico_3'),
@@ -195,13 +198,13 @@ app.layout = html.Div([
     html.Div([
         html.Div([
 
-            html.H3('considerações finais')
+            html.H3('(10)considerações finais')
 
         ], className='row', style={'display': 'flex','text-align': 'center'}),
         html.Br(),
         html.Div([
 
-            html.Label('tesxto bonito com as referencias')
+            html.Label('(11)tesxto bonito com as referencias')
 
         ], className='row', style={'display': 'flex','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
