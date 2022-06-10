@@ -13,11 +13,8 @@ path = 'databases/'
 df_despesa_por_grupo_farmaceutico_por_ano_por_regiao = pd.DataFrame(data=pd.read_csv(path + 'dispensa_de_medicamentos_por_grupo_farmacoterapeutico_por_ano_por_regiao.csv'))
 
 
-#Total = Hospitalar + Ambulatório PVP
-#Ambulatório PVP = Ambulatório Encargo Utentes + Ambulatório Comparticipalção SNS
-
 dropdown_dispensa_medicamentos_tipo_1 = [
-    {'label': 'Total (Hoslpitalar + Ambulatório', 'value': 'total'},
+    {'label': 'Total (Hoslpitalar + Ambulatório)', 'value': 'total'},
     {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
     {'label': 'Ambulatório (SNS + Utentes)', 'value': 'valor_pvp_ambulatorio'},
     {'label': 'Ambulatório Encargo SNS', 'value': 'encargos_sns_ambulatorio'},
@@ -33,22 +30,10 @@ dropdown_dispensa_medicamentos_regiao_2 = [
     {'label': 'Algarve', 'value': 'Algarve'},
 ]
 
-#Total = Hospitalar + Ambulatório PVP
-#Ambulatório PVP = Ambulatório Encargo Utentes + Ambulatório Comparticipalção SNS
-
-dropdown_dispensa_medicamentos_tipo_1 = [
-    {'label': 'Total', 'value': 'total'},
-    {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
-    {'label': 'Ambulatório PVP', 'value': 'valor_pvp_ambulatorio'},
-    {'label': 'Ambulatório Comparticipalção SNS', 'value': 'encargos_sns_ambulatorio'},
-    {'label': 'Ambulatório Encargo Utentes', 'value': 'encargos_utentes_ambulatorio'},
-]
-
 radio_percentage_absoluto_2 = [
     {'label': 'Percentagem', 'value': 'percentagem'},
     {'label': 'Absoluto', 'value': 'absoluto'}
 ]
-
 
 mostrar_nacional_checklist_1 = [
     'Mostrar Nacional'
@@ -60,7 +45,6 @@ normalizar_populacao_checklist_1 = [
 
 app = Dash(__name__)
 
-## HTML em dash
 app.layout = html.Div([
     html.Div([
         html.Div([
@@ -94,51 +78,52 @@ app.layout = html.Div([
         html.Div([
             html.H3('(4)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
         ], className='row', style={'text-align': 'center'}),
-        html.Br(),
         html.Div([
+
             html.Div([
+                html.Br(),
+                html.Br(),
+                html.Div([
+                    html.Div([
+                        dcc.Dropdown(
+                            id='dropdown_dispensa_medicamentos_tipo_1',
+                            options=dropdown_dispensa_medicamentos_tipo_1,
+                            value='total',
+                            searchable=False,
+                            clearable=False
+                        ),
+                    ]),
+                    html.Br(),
+                    html.Div([
+                        dcc.Checklist(
+                            mostrar_nacional_checklist_1,
+                            id='mostrar_nacional_checklist_1'
+                        ),
+                    ]),
+
+                    html.Div([
+                        dcc.Checklist(
+                            normalizar_populacao_checklist_1,
+                            id='normalizar_populacao_checklist_1'
+                        )
+                    ]),
+                    html.Br(),
+                ],className='row filter_container'),
+                html.Br(),
                 html.Div([
                     html.Label('(5)')
-                ],className='row'),
-                html.Div([
-                    html.Div([
-                        html.Div([
+                ], className='row'),
 
-                            html.Div([
-                                dcc.Dropdown(
-                                    id='dropdown_dispensa_medicamentos_tipo_1',
-                                    options=dropdown_dispensa_medicamentos_tipo_1,
-                                    value='total',
-                                    searchable=False,
-                                    clearable=False
-                                ),
-                            ]),
-                            html.Br(),
-                            html.Div([
-                                html.Div([
-                                    dcc.Checklist(
-                                        mostrar_nacional_checklist_1,
-                                        id = 'mostrar_nacional_checklist_1'
-                                    ),
-                                ]),
-                                html.Div([
-                                    dcc.Checklist(
-                                        normalizar_populacao_checklist_1,
-                                        id='normalizar_populacao_checklist_1'
-                                    )
-                                ]),
-                            ],style={'display':'block'}),
-                        ],className='filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
-                    ], className='col2',style={'display':'flex'}),
-                    html.Div([
-                        dcc.Graph(id='line_chart_dispensa_medicamentos_1')
-                    ], className='col2', style={'display': 'flex', 'width': '99%', 'text-align': 'center'}),
-                ],className='row', style={'display': 'inline'}),
+            ], className='col2', style={'width': '35%', 'text-align': 'left'}),
+
+            html.Div([
+
+                dcc.Graph(id='line_chart_dispensa_medicamentos_1')
+
+            ], className='col2', style={'width': '64%', 'text-align': 'center'}),
 
 
 
-
-            ], className='', style={'width':'99%','float':'center', 'text-align': 'center'}),
         ],className='row', style={'display': 'flex'}),
 
         html.Br(),
@@ -146,32 +131,36 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 html.Div([
-                    html.Label('(7)'),
                     html.Div([
-
-                        html.Div([
-                            dcc.Dropdown(
-                                id='dropdown_dispensa_medicamentos_regiao_2',
-                                options=dropdown_dispensa_medicamentos_regiao_2,
-                                value='Nacional',
-                                searchable=False,
-                                clearable=False
-                            ),
-                        ]),
-                        html.Br(),
                         html.Div([
                             html.Div([
-                                dcc.RadioItems(
-                                    id='radio_percentage_absoluto_2',
-                                    options=radio_percentage_absoluto_2,
-                                    value='percentagem'
+                                dcc.Dropdown(
+                                    id='dropdown_dispensa_medicamentos_regiao_2',
+                                    options=dropdown_dispensa_medicamentos_regiao_2,
+                                    value='Nacional',
+                                    searchable=False,
+                                    clearable=False
                                 ),
                             ]),
-                        ],style={'display':'block'}),
-                    ],className='row filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
-                ],style={}),
-                html.Br(),
+                            html.Br(),
+                            html.Div([
+                                html.Div([
+                                    dcc.RadioItems(
+                                        id='radio_percentage_absoluto_2',
+                                        options=radio_percentage_absoluto_2,
+                                        value='percentagem'
+                                    ),
+                                ]),
+                            ], style={'display': 'block'}),
+                        ], className='filter_container'),
+                    ], className='col2',style={'width':'35%'}),
+                    html.Div([
+                        html.Label('(7)'),
+                    ], className='col2',style={'width': '64%'}),
 
+                ],className='row'),
+
+                html.Br(),
                 html.Div([
 
                     dcc.Graph(id='stacked_bar_chart_medicamentos_2'),
@@ -200,7 +189,7 @@ app.layout = html.Div([
         html.Label('(9)'),
         html.Br(),
         html.Div([
-            dcc.Graph(id='sunburst_regiao_grupo_farmaceutico_3'),
+            dcc.Graph(id='treemap_regiao_grupo_farmaceutico_3'),
         ],className='row', style={}),
         html.Div([
             html.Div([
@@ -235,7 +224,7 @@ app.layout = html.Div([
 @app.callback(
     Output('line_chart_dispensa_medicamentos_1', 'figure'),
     Output('stacked_bar_chart_medicamentos_2', 'figure'),
-    Output('sunburst_regiao_grupo_farmaceutico_3', 'figure'),
+    Output('treemap_regiao_grupo_farmaceutico_3', 'figure'),
     Input('dropdown_dispensa_medicamentos_tipo_1', 'value'),
     Input('dropdown_dispensa_medicamentos_regiao_2', 'value'),
     Input('radio_percentage_absoluto_2', 'value'),
@@ -341,7 +330,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     lista_de_grupo_terapeutico = grupo_farmaceutico_por_ano_por_regiao_ordenado['grupo_terapeutico'].tolist()
     lista_de_grupo_terapeutico = list(dict.fromkeys(lista_de_grupo_terapeutico))'''
 
-    sunburst_regiao_grupo_farmaceutico_3=px.treemap(grupo_farmaceutico_por_ano_por_regiao,path=['regiao','grupo_terapeutico'], values='encargos_sns_ambulatorio')
+    treemap_regiao_grupo_farmaceutico_3=px.treemap(grupo_farmaceutico_por_ano_por_regiao,path=['regiao','grupo_terapeutico'], values='encargos_sns_ambulatorio')
 
 
     '''
@@ -362,7 +351,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     p = ['', 'Nacinal', 'Nacinal', 'Centro', 'Centro', 'Nacinal', 'Nacinal', 'LVT', 'Nacinal','Norte']
     v = [0, 0, 0, 10, 2, 0, 0, 4, 0,3]
     
-    sunburst_regiao_grupo_farmaceutico_3 = go.Figure(go.Sunburst(
+    treemap_regiao_grupo_farmaceutico_3 = go.Figure(go.Sunburst(
         labels=l,
         parents= p,
         values= v,
@@ -371,10 +360,10 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     # Update layout for tight margin
     # See https://plotly.com/python/creating-and-updating-figures/
     '''
-    sunburst_regiao_grupo_farmaceutico_3.update_layout(margin=dict(t=10, l=10, r=10, b=10))
+    treemap_regiao_grupo_farmaceutico_3.update_layout(margin=dict(t=10, l=10, r=10, b=10))
 
 
-    return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2,sunburst_regiao_grupo_farmaceutico_3
+    return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2,treemap_regiao_grupo_farmaceutico_3
 
 
 
