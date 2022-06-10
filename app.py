@@ -223,7 +223,7 @@ app.layout = html.Div([
             html.H3('Autores')
         ], className='row', style={'display': 'flex','text-align': 'center', 'font-size': '17px'}),
         html.Div([
-            html.Label('Catarina Bragança (20210950), Diogo Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)'),
+            html.Label('Catarina Bragança (20210950), Diogo Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (20211710)'),
             html.Br()
         ], className='row', style={'display': 'flex','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
@@ -373,7 +373,10 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         ],layout=layout_stacked_bar_chart_medicamentos_3,)
 
     stacked_bar_chart_medicamentos_3.update_layout(barmode='stack')
-
+    .update_layout(
+        hoverlabel=dict(
+            font_size=14,
+        )
     # treemap
 
     slider_converter = {0:2011, 1:2012, 2:2013, 3:2014, 4:2015, 5:2016, 6:2017, 7:2018, 8:2019, 9:2020, 10:2021}
@@ -386,11 +389,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         path=['regiao','grupo_terapeutico'],
         values='encargos_sns_ambulatorio',
         color='encargos_sns_ambulatorio',
-        #color_continuous_scale=["#1C3945", "#DAF3AB"],
-        #color_continuous_scale=["#335775","#D8ECEB"],
-        #color_continuous_scale=["#FAE0C6", "#DB574B"],
         color_continuous_scale='emrld',
-
     )
     '''
     treemap_regiao_grupo_farmaceutico_4 = px.treemap(
