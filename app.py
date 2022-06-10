@@ -65,7 +65,9 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('Dashboard - Encargos com Medicamentos Comparticipados em Portugal'),
+            html.Div([
+                html.H3('Dashboard - Encargos com Medicamentos Comparticipados em Portugal'),
+            ],style={'font-size': '17px'}),
             html.Label('O portal da transparência do SNS publica variados dados de saúde.'),
             html.Br(),
             html.Label('Este Dasboard analiza dados de encargos com medicação no Serviço Nacional de Saúde por região do país, por ano e por grupo farmacoterapêutico.'),
@@ -77,7 +79,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Qual a evolução dos encargos totais com medicamentos no SNS?')
-        ], className='row', style={'text-align': 'center'}),
+        ], className='row', style={'text-align': 'center', 'font-size': '17px'}),
         html.Div([
 
             html.Div([
@@ -124,7 +126,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Qual a divisão entre encargos em ambulatório e em ambiente hospitalar?')
-        ], className='row', style={'text-align': 'center'}),
+        ], className='row', style={'text-align': 'center', 'font-size': '17px'}),
         html.Div([
             html.Div([
                 html.Div([
@@ -180,7 +182,7 @@ app.layout = html.Div([
 
             html.H3('Qual a despesa de medicamentos por grupo farmacoterapêutico?')
 
-        ], className='row', style={'text-align': 'center'}),
+        ], className='row', style={'text-align': 'center', 'font-size': '17px'}),
         html.Label('Evolução dos encargos em medicamentos por grupo farmacoterapêutico e por região.'),
         html.Br(),
         html.Label('Evolução entre 2011 e 2021'),
@@ -205,7 +207,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Referências')
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        ], className='row', style={'display': 'flex','text-align': 'center', 'font-size': '17px'}),
 
         html.Div([
             html.Label('​Ministério da Saúde. (junho de 2022). Portal da Transparência. Obtido de Portal da Transparência: https://www.sns.gov.pt/transparencia/'),
@@ -219,9 +221,10 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Autores')
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        ], className='row', style={'display': 'flex','text-align': 'center', 'font-size': '17px'}),
         html.Div([
-            html.Label('Catarina Bragança (20210950), Diogo Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)')
+            html.Label('Catarina Bragança (20210950), Diogo Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)'),
+            html.Br()
         ], className='row', style={'display': 'flex','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
 ])
