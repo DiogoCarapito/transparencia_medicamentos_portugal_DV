@@ -179,12 +179,12 @@ app.layout = html.Div([
         ],className='row', style={}),
         html.Div([
             html.Div([
-                dcc.Slider(min=2011,
-                           max=2021,
-                           step=1,
-                           value=2021,
-                           id='slider_ano_3'
-                           ),
+                dcc.Slider(
+                    min=2011,
+                    max=2021,
+                    step=1,
+                    value=2021,
+                    id='slider_ano_3'),
                 ]),
         ],className='row', style={}),
 
