@@ -15,6 +15,7 @@ body {
     text-align: center;
     font-size: 17px;
 }
+
 .label {
     font-family: Gill sans, Sans-Serif;
 }
@@ -31,6 +32,7 @@ body {
     padding: 20px;
     display: block;
 }
+
 .filter_container{
     background-color: rgb(242, 242, 242);
     text-align: center;
