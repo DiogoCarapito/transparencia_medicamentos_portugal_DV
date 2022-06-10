@@ -211,8 +211,12 @@ app.layout = html.Div([
         ], className='row', style={'display': 'flex','text-align': 'center'}),
 
         html.Div([
-            html.Label('(11)tesxto bonito com as referencias')
-        ], className='row', style={'display': 'flex','text-align': 'center'})
+            html.Label('​Ministério da Saúde. (junho de 2022). Portal da Transparência. Obtido de Portal da Transparência: https://www.sns.gov.pt/transparencia/'),
+            html.Br(),
+            html.Label('Munzner, T. (2015). Visualization Analysis and Design. CRC Press.'),
+            html.Br(),
+            html.Label('Plotly. (maio de 2022). Dash Python User Guide. Obtido de Dash Python User Guide: https://dash.plotly.com/ '),
+        ], className='row', style={'display': 'block','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
 
     html.Div([
@@ -241,7 +245,6 @@ app.layout = html.Div([
 def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3,mostrar_nacional_checklist_1,normalizar_populacao_checklist_1):
     
     # line_chart_dispensa_medicamentos_1
-
     gasto_medicamentos_regiao_por_ano = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
 
     gasto_medicamentos_regiao_por_ano_ordenado = gasto_medicamentos_regiao_por_ano.sort_values(by='total', ascending=False)
@@ -271,7 +274,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
             marker_color= cor[regiao]
         ))
 
-
     if mostrar_nacional_checklist_1 == ['Mostrar Nacional']:
         gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano',ascending=True)
         gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
@@ -290,7 +292,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         paper_bgcolor='#FFFFFF',
         plot_bgcolor='#F3F6F8',
     )
-
 
     # stacked_bar_chart_medicamentos_2
 
@@ -335,8 +336,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
             ),
         ],layout=layout_stacked_bar_chart_medicamentos_2,)
 
-
-
     # stacked_bar_chart_medicamentos_3
 
     if radio_percentage_absoluto_2 == 'percentagem':
@@ -380,10 +379,6 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     slider_converter = {0:2011, 1:2012, 2:2013, 3:2014, 4:2015, 5:2016, 6:2017, 7:2018, 8:2019, 9:2020, 10:2021}
     grupo_farmaceutico_por_ano_por_regiao = df_despesa_por_grupo_farmaceutico_por_ano_por_regiao.loc[df_despesa_por_grupo_farmaceutico_por_ano_por_regiao['ano'] == slider_converter[slider_ano_3]]
 
-    '''grupo_farmaceutico_por_ano_por_regiao_ordenado = grupo_farmaceutico_por_ano_por_regiao.sort_values(by='encargos_sns_ambulatorio',ascending=True)
-    lista_de_grupo_terapeutico = grupo_farmaceutico_por_ano_por_regiao_ordenado['grupo_terapeutico'].tolist()
-    lista_de_grupo_terapeutico = list(dict.fromkeys(lista_de_grupo_terapeutico))'''
-
     cor_treemap = ['rgba(23, 16, 90, 1)', 'rgba(128, 168, 214, 1)', 'rgba(129, 66, 132, 1)',  'rgba(143, 117, 103, 1)', 'rgba(234, 150, 126, 1)', 'rgba(246, 210, 129, 1)']
 
     '''treemap_regiao_grupo_farmaceutico_4=px.treemap(
@@ -404,39 +399,9 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     )
 
     treemap_regiao_grupo_farmaceutico_4.update_traces(root_color="lightgrey")
-
-    '''
-    l= ['Nacional']
-    p=['']
-    v=[0]
-
-    for regi in lista_de_regioes:
-        l.append(regi)
-        p.append('Nacional')
-        v.append(0)
-        for cada in lista_de_grupo_terapeutico:
-            l.append(cada)
-            p.append(regi)
-            v.append(10)
-
-    l = ['Nacinal', 'Norte', 'Centro', 'Enos', 'Noam', 'Alentejo', 'LVT', 'Enoch', 'Algarve','cenas']
-    p = ['', 'Nacinal', 'Nacinal', 'Centro', 'Centro', 'Nacinal', 'Nacinal', 'LVT', 'Nacinal','Norte']
-    v = [0, 0, 0, 10, 2, 0, 0, 4, 0,3]
-    
-    treemap_regiao_grupo_farmaceutico_4 = go.Figure(go.Sunburst(
-        labels=l,
-        parents= p,
-        values= v,
-    ))
-    
-    # Update layout for tight margin
-    # See https://plotly.com/python/creating-and-updating-figures/
-    '''
     treemap_regiao_grupo_farmaceutico_4.update_layout(margin=dict(t=10, l=10, r=10, b=10))
-    #treemap_regiao_grupo_farmaceutico_4.update_layout(colorway=[])
 
     return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2,stacked_bar_chart_medicamentos_3,treemap_regiao_grupo_farmaceutico_4
 
-## linha necessária par execuar a app
 if __name__ == '__main__':
     app.run_server(debug=True)
