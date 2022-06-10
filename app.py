@@ -54,6 +54,10 @@ mostrar_nacional_checklist_1 = [
     'Mostrar Nacional'
 ]
 
+normalizar_populacao_checklist_1 = [
+    'Normalizar (por habitante)'
+]
+
 app = Dash(__name__)
 
 ## HTML em dash
@@ -109,17 +113,22 @@ app.layout = html.Div([
                             dcc.Checklist(
                                 mostrar_nacional_checklist_1,
                                 id = 'mostrar_nacional_checklist_1'
+                            ),
+                            dcc.Checklist(
+                                normalizar_populacao_checklist_1,
+                                id='normalizar_populacao_checklist_1'
                             )
+
                         ])
-                    ],className='row filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
-                ],style={'text-align':'center'}),
+                    ],className='row filter_container', style={'text-align': 'left','justify-content': 'center', 'width': '50%'}),
+                ],style={}),
                 html.Br(),
 
                 html.Div([
                     dcc.Graph(id='line_chart_dispensa_medicamentos_1')
                 ], className='row', style={}),
 
-            ], className='col2', style={'width':'49%','float':'left'}),
+            ], className='col2', style={'width':'49%','float':'center', 'text-align': 'center'}),
             html.Div([
 
                 html.Div([
@@ -162,7 +171,7 @@ app.layout = html.Div([
         ], className='row', style={'text-align': 'center'}),
         html.Br(),
         html.Div([
-            dcc.Graph(id='sunburst_regiao_grupo_farmaceutico_3')
+            dcc.Graph(id='sunburst_regiao_grupo_farmaceutico_3'),
         ],className='row', style={}),
         html.Div([
             html.Div([
@@ -172,7 +181,7 @@ app.layout = html.Div([
                            value=2021,
                            id='slider_ano_3'
                            ),
-                ])
+                ]),
         ],className='row', style={}),
 
     ], className='row container', style={'display': 'block'}),
@@ -203,11 +212,13 @@ app.layout = html.Div([
     Input('radio_percentage_absoluto_2', 'value'),
     Input('slider_ano_3', 'value'),
     Input('mostrar_nacional_checklist_1', 'value'),
+    Input('normalizar_populacao_checklist_1', 'value'),
+
 
 
 )
 
-def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3,mostrar_nacional_checklist_1):
+def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3,mostrar_nacional_checklist_1,normalizar_populacao_checklist_1):
     
     # line_chart_dispensa_medicamentos_1
 
@@ -221,28 +232,35 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     line_chart_dispensa_medicamentos_1 = go.Figure()
 
+    if normalizar_populacao_checklist_1 == ['Normalizar (por habitante)']:
+        populacao={'Nacional':10493410, 'Norte':3765539,'LVT':3869536,'Centro':1819360,'Alentejo':528126,'Algarve':510849}
+    else:
+        populacao={'Nacional': 1, 'Norte': 1, 'LVT': 1, 'Centro': 1, 'Alentejo': 1,'Algarve': 1}
+
+
+    for regiao in lista_de_regioes:
+        gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
+        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
+                                              y=(gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1]/populacao[regiao]),
+                                              mode='lines+markers',
+                                              name=regiao
+                                              ))
+
+
     if mostrar_nacional_checklist_1 == ['Mostrar Nacional']:
         gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano',ascending=True)
         gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
         line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
-                                          y=gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1],
+                                          y=(gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1]/populacao['Nacional']),
                                           mode='lines+markers',
                                           name='Nacional'))
 
-    for regiao in lista_de_regioes:
 
-        gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
-
-        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
-                                          y=gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1],
-                                          mode='lines+markers',
-                                          name=regiao
-                                          ))
-
-    line_chart_dispensa_medicamentos_1.update_layout(title='Evolução dos gastos em medicamentos entre 2017 e 2021',
-                               xaxis_title='Anos',
-                               yaxis_title='Gastos em milhões de €',
-                               paper_bgcolor='#FFFFFF')
+    line_chart_dispensa_medicamentos_1.update_layout(
+        title='Evolução dos gastos em medicamentos entre 2017 e 2021',
+        xaxis_title='Anos',
+        yaxis_title='Gastos em milhões de €',
+        paper_bgcolor='#FFFFFF')
 
 
     # stacked_bar_chart_medicamentos_2
