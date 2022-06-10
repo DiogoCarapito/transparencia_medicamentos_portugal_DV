@@ -17,10 +17,10 @@ df_despesa_por_grupo_farmaceutico_por_ano_por_regiao = pd.DataFrame(data=pd.read
 #Ambulatório PVP = Ambulatório Encargo Utentes + Ambulatório Comparticipalção SNS
 
 dropdown_dispensa_medicamentos_tipo_1 = [
-    {'label': 'Total', 'value': 'total'},
+    {'label': 'Total (Hoslpitalar + Ambulatório', 'value': 'total'},
     {'label': 'Hospitalar', 'value': 'encargos_sns_hospitalar'},
-    {'label': 'Ambulatório PVP', 'value': 'valor_pvp_ambulatorio'},
-    {'label': 'Ambulatório Comparticipalção SNS', 'value': 'encargos_sns_ambulatorio'},
+    {'label': 'Ambulatório (SNS + Utentes)', 'value': 'valor_pvp_ambulatorio'},
+    {'label': 'Ambulatório Encargo SNS', 'value': 'encargos_sns_ambulatorio'},
     {'label': 'Ambulatório Encargo Utentes', 'value': 'encargos_utentes_ambulatorio'},
 ]
 
@@ -69,12 +69,12 @@ app.layout = html.Div([
                 html.Img(src=app.get_asset_url('logo.png'), style={'width': '60px', 'position': 'left'})
             ], id='logo')
 
-        ], style={'width': '25%'}),
+        ], style={'width': '8%'}),
         html.Div([
 
             html.H2('(1)Medicamentos - Portal da Transparência')
 
-            ],style={'width':'79%','position': 'right'}
+            ],style={'width':'91%','position': 'right'}
         ),
 
     ],className='row container', style={'display': 'flex'}),
@@ -98,14 +98,62 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 html.Div([
-                    html.Label('(5)'),
+                    html.Label('(5)')
+                ],className='row'),
+                html.Div([
+                    html.Div([
+                        html.Div([
+
+                            html.Div([
+                                dcc.Dropdown(
+                                    id='dropdown_dispensa_medicamentos_tipo_1',
+                                    options=dropdown_dispensa_medicamentos_tipo_1,
+                                    value='total',
+                                    searchable=False,
+                                    clearable=False
+                                ),
+                            ]),
+                            html.Br(),
+                            html.Div([
+                                html.Div([
+                                    dcc.Checklist(
+                                        mostrar_nacional_checklist_1,
+                                        id = 'mostrar_nacional_checklist_1'
+                                    ),
+                                ]),
+                                html.Div([
+                                    dcc.Checklist(
+                                        normalizar_populacao_checklist_1,
+                                        id='normalizar_populacao_checklist_1'
+                                    )
+                                ]),
+                            ],style={'display':'block'}),
+                        ],className='filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
+                    ], className='col2',style={'display':'flex'}),
+                    html.Div([
+                        dcc.Graph(id='line_chart_dispensa_medicamentos_1')
+                    ], className='col2', style={'display': 'flex', 'width': '99%', 'text-align': 'center'}),
+                ],className='row', style={'display': 'inline'}),
+
+
+
+
+            ], className='', style={'width':'99%','float':'center', 'text-align': 'center'}),
+        ],className='row', style={'display': 'flex'}),
+
+        html.Br(),
+
+        html.Div([
+            html.Div([
+                html.Div([
+                    html.Label('(7)'),
                     html.Div([
 
                         html.Div([
                             dcc.Dropdown(
-                                id='dropdown_dispensa_medicamentos_tipo_1',
-                                options=dropdown_dispensa_medicamentos_tipo_1,
-                                value='total',
+                                id='dropdown_dispensa_medicamentos_regiao_2',
+                                options=dropdown_dispensa_medicamentos_regiao_2,
+                                value='Nacional',
                                 searchable=False,
                                 clearable=False
                             ),
@@ -113,16 +161,11 @@ app.layout = html.Div([
                         html.Br(),
                         html.Div([
                             html.Div([
-                                dcc.Checklist(
-                                    mostrar_nacional_checklist_1,
-                                    id = 'mostrar_nacional_checklist_1'
+                                dcc.RadioItems(
+                                    id='radio_percentage_absoluto_2',
+                                    options=radio_percentage_absoluto_2,
+                                    value='percentagem'
                                 ),
-                            ]),
-                            html.Div([
-                                dcc.Checklist(
-                                    normalizar_populacao_checklist_1,
-                                    id='normalizar_populacao_checklist_1'
-                                )
                             ]),
                         ],style={'display':'block'}),
                     ],className='row filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
@@ -130,41 +173,20 @@ app.layout = html.Div([
                 html.Br(),
 
                 html.Div([
-                    dcc.Graph(id='line_chart_dispensa_medicamentos_1')
-                ], className='row', style={}),
 
-            ], className='col2', style={'width':'49%','float':'center', 'text-align': 'center'}),
-            html.Div([
-                html.Label('(7)'),
-                html.Div([
-                    html.Div([
-                        dcc.Dropdown(
-                            id='dropdown_dispensa_medicamentos_regiao_2',
-                            options=dropdown_dispensa_medicamentos_regiao_2,
-                            value='Nacional',
-                            searchable=False,
-                            clearable=False
-                        ),
-                    ]),
-                    html.Br(),
-                    html.Div([
-                        dcc.RadioItems(
-                            id='radio_percentage_absoluto_2',
-                            options=radio_percentage_absoluto_2,
-                            value='percentagem'
-                        ),
-                    ]),
-                    html.Br(),
-                ],className='row filter_container', style={'text-align': 'center', 'width': '50%'}),
-
-                html.Br(),
-
-                html.Div([
                     dcc.Graph(id='stacked_bar_chart_medicamentos_2'),
-                ],className='row', style={}),
 
-            ], className='col2', style={'width':'49%','float':'right'}),
+                ], className='col2', style={'width':'45%','text-align': 'center'}),
+
+                html.Div([
+
+                    dcc.Graph(id='stacked_bar_chart_medicamentos_3'),
+
+                ], className='col2', style={'width': '45%', 'text-align': 'center'}),
+
+            ], className='', style={'width':'99%','float':'center', 'text-align': 'center'}),
         ],className='row', style={'display': 'flex'}),
+
     ], className='row container', style={'display': 'block'}),
 
     html.Br(),
