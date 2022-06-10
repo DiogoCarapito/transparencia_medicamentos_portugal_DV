@@ -76,7 +76,7 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('(4)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+            html.H3('Qual a evolução dos gastos totais com medicamentos no SNS?')
         ], className='row', style={'text-align': 'center'}),
         html.Div([
 
@@ -131,7 +131,7 @@ app.layout = html.Div([
 
     html.Div([
         html.Div([
-            html.H3('(6)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+            html.H3('Qual a divisão entre gastos em ambulatório e em ambiente hospitalar?')
         ], className='row', style={'text-align': 'center'}),
         html.Div([
             html.Div([
@@ -183,7 +183,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
 
-            html.H3('(8)Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
+            html.H3('Qual a despesa de medicamentos por grupo farmacoterapêutico?')
 
         ], className='row', style={'text-align': 'center'}),
         html.Label('(9)'),
@@ -220,7 +220,7 @@ app.layout = html.Div([
             html.H3('Autores')
         ], className='row', style={'display': 'flex','text-align': 'center'}),
         html.Div([
-            html.Label('Catarina Bragança (20210950), Dioco Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)')
+            html.Label('Catarina Bragança (20210950), Diogo Carapito (20211202), Filipa Pardelha (20210949), Ricardo Martins (2011710)')
         ], className='row', style={'display': 'flex','text-align': 'center'})
     ], className='row container', style={'display': 'block'}),
 ])
