@@ -110,17 +110,20 @@ app.layout = html.Div([
                         ]),
                         html.Br(),
                         html.Div([
-                            dcc.Checklist(
-                                mostrar_nacional_checklist_1,
-                                id = 'mostrar_nacional_checklist_1'
-                            ),
-                            dcc.Checklist(
-                                normalizar_populacao_checklist_1,
-                                id='normalizar_populacao_checklist_1'
-                            )
-
-                        ])
-                    ],className='row filter_container', style={'text-align': 'left','justify-content': 'center', 'width': '50%'}),
+                            html.Div([
+                                dcc.Checklist(
+                                    mostrar_nacional_checklist_1,
+                                    id = 'mostrar_nacional_checklist_1'
+                                ),
+                            ]),
+                            html.Div([
+                                dcc.Checklist(
+                                    normalizar_populacao_checklist_1,
+                                    id='normalizar_populacao_checklist_1'
+                                )
+                            ]),
+                        ],style={'display':'block'}),
+                    ],className='row filter_container', style={'text-align': 'center','justify-content': 'center', 'width': '50%'}),
                 ],style={}),
                 html.Br(),
 
@@ -149,6 +152,7 @@ app.layout = html.Div([
                             value='percentagem'
                         ),
                     ]),
+                    html.Br(),
                 ],className='row filter_container', style={'text-align': 'center', 'width': '50%'}),
 
                 html.Br(),
@@ -234,32 +238,37 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     if normalizar_populacao_checklist_1 == ['Normalizar (por habitante)']:
         populacao={'Nacional':10493410, 'Norte':3765539,'LVT':3869536,'Centro':1819360,'Alentejo':528126,'Algarve':510849}
+        y_axis='Gastos per capita em €'
     else:
         populacao={'Nacional': 1, 'Norte': 1, 'LVT': 1, 'Centro': 1, 'Alentejo': 1,'Algarve': 1}
+        y_axis='Gastos em milhões de €'
 
 
     for regiao in lista_de_regioes:
         gastos_por_regiao = gasto_medicamentos_regiao_por_ano.loc[gasto_medicamentos_regiao_por_ano['regiao'] == regiao]
-        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gastos_por_regiao['ano'],
-                                              y=(gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1]/populacao[regiao]),
-                                              mode='lines+markers',
-                                              name=regiao
-                                              ))
+        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(
+            x=gastos_por_regiao['ano'],
+            y=(gastos_por_regiao[dropdown_dispensa_medicamentos_tipo_1]/populacao[regiao]).round(decimals = 0),
+            mode='lines+markers',
+            name=regiao
+        ))
 
 
     if mostrar_nacional_checklist_1 == ['Mostrar Nacional']:
         gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano',ascending=True)
         gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
-        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
-                                          y=(gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1]/populacao['Nacional']),
-                                          mode='lines+markers',
-                                          name='Nacional'))
+        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(
+            x=gasto_medicamentos_nacional_por_ano['ano'],
+            y=(gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1]/populacao['Nacional']).round(decimals = 0),
+            mode='lines+markers',
+            name='Nacional'
+        ))
 
 
     line_chart_dispensa_medicamentos_1.update_layout(
-        title='Evolução dos gastos em medicamentos entre 2017 e 2021',
-        xaxis_title='Anos',
-        yaxis_title='Gastos em milhões de €',
+        title='Evolução dos gastos em medicamentos entre 2017 e 2021 por Região',
+        xaxis_title='Ano',
+        yaxis_title=y_axis,
         paper_bgcolor='#FFFFFF')
 
 
@@ -267,8 +276,10 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     if dropdown_dispensa_medicamentos_regiao_2 == 'Nacional':
         data_base = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano', ascending=True)
+        data_base['ano'] = data_base['ano'].apply(str)
     else:
         data_base = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
+        data_base['ano'] = data_base['ano'].apply(str)
         data_base = data_base.loc[data_base['regiao'] == dropdown_dispensa_medicamentos_regiao_2]
 
     if radio_percentage_absoluto_2 == 'percentagem':
@@ -282,7 +293,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
         y_encargos_utentes_ambulatorio = (data_base['encargos_utentes_ambulatorio'].tolist())
         y_axis_title = 'M€ Gastos por categoria'
 
-    layout_bar_1 = dict(title=dict(text='Gastros por categoria entre 2017 e 2021'),
+    layout_stacked_bar_chart_medicamentos_2 = dict(title=dict(text='Gastros por categoria entre 2017 e 2021'),
                       yaxis=dict(title=y_axis_title),
                       xaxis=dict(title='Ano'),
                       paper_bgcolor='#FFFFFF',
@@ -290,10 +301,11 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     stacked_bar_chart_medicamentos_2 = go.Figure(
         data=[
-            go.Bar(name='encargos_sns_hospitalar', x=data_base['ano'].tolist(), y=y_encargos_sns_hospitalar),
-            go.Bar(name='encargos_sns_ambulatorio', x=data_base['ano'].tolist(), y=y_encargos_sns_ambulatorio),
-            go.Bar(name='encargos_utentes_ambulatorio', x=data_base['ano'].tolist(), y=y_encargos_utentes_ambulatorio),
-        ],layout=layout_bar_1,)
+            go.Bar(name='Gastos SNS Hospitalar', x=data_base['ano'].tolist(), y=y_encargos_sns_hospitalar),
+            go.Bar(name='Gastos SNS Ambulatório', x=data_base['ano'].tolist(), y=y_encargos_sns_ambulatorio),
+            go.Bar(name='Gastos Utentes Ambulatório', x=data_base['ano'].tolist(), y=y_encargos_utentes_ambulatorio),
+        ],layout=layout_stacked_bar_chart_medicamentos_2,)
+
     stacked_bar_chart_medicamentos_2.update_layout(barmode='stack')
 
     # sunburst
