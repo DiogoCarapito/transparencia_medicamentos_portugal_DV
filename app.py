@@ -49,6 +49,11 @@ radio_percentage_absoluto_2 = [
     {'label': 'Absoluto', 'value': 'absoluto'}
 ]
 
+radio_nacional_1 = [
+    {'label': 'Ocultar Nacional', 'value': 'ocultar'},
+    {'label': 'Mostrar Nacional', 'value': 'mostrar'}
+]
+
 app = Dash(__name__)
 
 ## HTML em dash
@@ -83,7 +88,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        ], className='row', style={'text-align': 'center'}),
         html.Br(),
         html.Div([
             html.Div([
@@ -95,14 +100,21 @@ app.layout = html.Div([
                         value='total',
                         searchable=False,
                         clearable=False
-                    )
-                ],className='row', style={'display': 'flex','text-align': 'center'}),
+                    ),
+                    html.Br(),
+                    dcc.RadioItems(
+                        id='radio_nacional_1',
+                        options=radio_nacional_1,
+                        value='ocultar'
+                    ),
+
+                ],className='row', style={'text-align': 'center', 'width': '75%'}),
 
                 html.Br(),
 
                 html.Div([
                     dcc.Graph(id='line_chart_dispensa_medicamentos_1')
-                ], className='row', style={'display': 'flex'}),
+                ], className='row', style={}),
 
             ], className='col2', style={'width':'49%','float':'left'}),
             html.Div([
@@ -115,18 +127,21 @@ app.layout = html.Div([
                         searchable=False,
                         clearable=False
                     ),
+
+                    html.Br(),
                     dcc.RadioItems(
                         id='radio_percentage_absoluto_2',
                         options=radio_percentage_absoluto_2,
                         value='percentagem'
                     ),
-                ],className='row', style={'display': 'flex','text-align': 'center'}),
+
+                ],className='row', style={'text-align': 'center', 'width': '75%'}),
 
                 html.Br(),
 
                 html.Div([
                     dcc.Graph(id='stacked_bar_chart_medicamentos_2'),
-                ],className='row', style={'display': 'flex'}),
+                ],className='row', style={}),
 
             ], className='col2', style={'width':'49%','float':'right'}),
         ],className='row', style={'display': 'flex'}),
@@ -139,11 +154,11 @@ app.layout = html.Div([
 
             html.H3('Gastos medicmaentos por ARS entre 2017 e 2021 texto grande so para testar coisas ')
 
-        ], className='row', style={'display': 'flex','text-align': 'center'}),
+        ], className='row', style={'text-align': 'center'}),
         html.Br(),
         html.Div([
             dcc.Graph(id='sunburst_regiao_grupo_farmaceutico_3')
-        ],className='row', style={'display': 'flex'}),
+        ],className='row', style={}),
         html.Div([
             html.Div([
                 dcc.Slider(min=2011,
@@ -153,7 +168,7 @@ app.layout = html.Div([
                            id='slider_ano_3'
                            ),
                 ])
-        ],className='row', style={'display': 'flex','width': '50%'}),
+        ],className='row', style={}),
 
     ], className='row container', style={'display': 'block'}),
 
@@ -182,28 +197,31 @@ app.layout = html.Div([
     Input("dropdown_dispensa_medicamentos_regiao_2", "value"),
     Input("radio_percentage_absoluto_2", "value"),
     Input("slider_ano_3", "value"),
+    Input("radio_nacional_1", "value"),
 
 )
 
-def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3):
+def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medicamentos_regiao_2,radio_percentage_absoluto_2,slider_ano_3, radio_nacional_1):
     
     # line_chart_dispensa_medicamentos_1
 
-    gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano', ascending=True)
     gasto_medicamentos_regiao_por_ano = df_despesa_com_medicamentos_no_sns_por_ano_por_regiao.sort_values(by='ano', ascending=True)
 
     gasto_medicamentos_regiao_por_ano_ordenado = gasto_medicamentos_regiao_por_ano.sort_values(by='total', ascending=False)
     lista_de_regioes = gasto_medicamentos_regiao_por_ano_ordenado['regiao'].tolist()
     lista_de_regioes = list(dict.fromkeys(lista_de_regioes))
 
-    gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
     gasto_medicamentos_regiao_por_ano['ano'] = gasto_medicamentos_regiao_por_ano['ano'].apply(str)
 
     line_chart_dispensa_medicamentos_1 = go.Figure()
-    line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
-                                      y=gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1],
-                                      mode='lines+markers',
-                                      name='Nacional'))
+
+    if radio_nacional_1 == 'mostrar':
+        gasto_medicamentos_nacional_por_ano = df_despesa_com_medicamentos_no_sns_por_ano.sort_values(by='ano',ascending=True)
+        gasto_medicamentos_nacional_por_ano['ano'] = gasto_medicamentos_nacional_por_ano['ano'].apply(str)
+        line_chart_dispensa_medicamentos_1.add_trace(go.Scatter(x=gasto_medicamentos_nacional_por_ano['ano'],
+                                          y=gasto_medicamentos_nacional_por_ano[dropdown_dispensa_medicamentos_tipo_1],
+                                          mode='lines+markers',
+                                          name='Nacional'))
 
     for regiao in lista_de_regioes:
 
@@ -256,7 +274,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
 
     # sunburst
 
-    grupo_farmaceutico_por_ano_por_regiao = df_despesa_por_grupo_farmaceutico_por_ano_por_regiao.loc[df_despesa_por_grupo_farmaceutico_por_ano_por_regiao['ano'] == 2020]
+    grupo_farmaceutico_por_ano_por_regiao = df_despesa_por_grupo_farmaceutico_por_ano_por_regiao.loc[df_despesa_por_grupo_farmaceutico_por_ano_por_regiao['ano'] == slider_ano_3]
 
     '''grupo_farmaceutico_por_ano_por_regiao_ordenado = grupo_farmaceutico_por_ano_por_regiao.sort_values(by='encargos_sns_ambulatorio',ascending=True)
     lista_de_grupo_terapeutico = grupo_farmaceutico_por_ano_por_regiao_ordenado['grupo_terapeutico'].tolist()
@@ -292,7 +310,7 @@ def generate_chart(dropdown_dispensa_medicamentos_tipo_1,dropdown_dispensa_medic
     # Update layout for tight margin
     # See https://plotly.com/python/creating-and-updating-figures/
     '''
-    sunburst_regiao_grupo_farmaceutico_3.update_layout(margin=dict(t=0, l=0, r=0, b=0))
+    sunburst_regiao_grupo_farmaceutico_3.update_layout(margin=dict(t=10, l=10, r=10, b=10))
 
 
     return line_chart_dispensa_medicamentos_1, stacked_bar_chart_medicamentos_2,sunburst_regiao_grupo_farmaceutico_3
