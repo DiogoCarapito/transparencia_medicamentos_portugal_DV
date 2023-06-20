@@ -1,2 +1,1 @@
-Project at NOVA IMS
-Data Visualization 
+## Data Visualization Project at NOVA IMS
